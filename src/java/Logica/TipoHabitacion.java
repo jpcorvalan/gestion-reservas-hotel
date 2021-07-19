@@ -5,6 +5,7 @@
  */
 package Logica;
 
+import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,12 +25,13 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "tipo_habitacion")
-public class TipoHabitacion {
+public class TipoHabitacion implements Serializable {
     
     
     // Variables de instancia
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private int id;
     
     @Basic
@@ -41,6 +43,7 @@ public class TipoHabitacion {
     private int cantidadPersonas;
     
     @Basic
+    @Column(name = "descripcion")
     private String descripcion;
     
     
