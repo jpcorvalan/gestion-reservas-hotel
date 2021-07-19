@@ -20,12 +20,12 @@ import javax.persistence.Table;
  * Esta clase consiste dedicar una tabla exclusiva para los tipos de habitación existentes
  * dentro de la cadena hotelera, pudiendo agregar más tipos de habitaciones si lo es requerido
  * en un futuro por la empresa.
- * Esta tabla está pensada para que ya tenga ciertos datos precargados.
+ * La tabla que representa, está pensada para que ya tenga ciertos datos precargados.
  * 
  * @author Corvalán Juan Pablo
  */
 @Entity
-@Table(name = "tipo_habitacion")
+@Table(name = "tipos_habitacion")
 public class TipoHabitacion implements Serializable {
     
     

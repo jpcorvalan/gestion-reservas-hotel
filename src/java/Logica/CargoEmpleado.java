@@ -21,7 +21,7 @@ import javax.persistence.Table;
  * @author Corvalán Juan Pablo
  */
 @Entity
-@Table(name = "cargo_empleado")
+@Table(name = "cargos_empleado")
 public class CargoEmpleado implements Serializable {
     
     // Variables de instancia
