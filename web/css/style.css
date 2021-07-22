@@ -145,7 +145,7 @@ a:link, a:visited, a:active {
 
 
 
-/*----- Formulario de registro - INICIO -----*/
+/*----- Formularios - INICIO -----*/
 
 .bloque-formulario{
     margin-top: 1.5rem;
@@ -161,19 +161,19 @@ a:link, a:visited, a:active {
     border-radius: 10px;
 }
 
-.bloque-formulario .formulario-registro form{
+.bloque-formulario .formulario form{
     display: flex;
     flex-direction: column;
     justify-content: center;    
 }
 
-.bloque-formulario .formulario-registro label{
+.bloque-formulario .formulario label{
     border-radius: 10px;
     width: 100%;
     padding: 10px;
 }
 
-.bloque-formulario .formulario-registro label input{
+.bloque-formulario .formulario label input{
     width: 100%;
     padding: 8px;
     border-radius: 5px;
@@ -181,10 +181,10 @@ a:link, a:visited, a:active {
     outline: none;
 }
 
-.bloque-formulario .formulario-registro .boton-registro{
+.bloque-formulario .formulario .boton{
     display: flex;
     justify-content: center;
 }
 
 
-/*----- Formulario de registro - FIN -----*/
+/*----- Formularios - FIN -----*/

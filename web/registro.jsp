@@ -17,7 +17,7 @@
             
             <h2 class="titulos">Registrarse</h2>
             
-            <div class="formulario-registro">
+            <div class="formulario">
                 
                 <form method="post" action="">
                     
@@ -56,8 +56,12 @@
                         <input name="direccion" class="campos" type="text" placeholder="Ingrese su dirección" autocomplete="off">
                     </label>
                     
-                    <div class="boton-registro">
+                    <div class="boton">
                         <input class="boton-tipo2" type="submit" value="Registrarme">
+                    </div>
+                    
+                    <div class="boton">
+                        <p class="indicador">Si ya posee una cuenta, puede <a href="login.jsp">INGRESAR</a></p>
                     </div>
                     
                     
