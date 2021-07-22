@@ -8,17 +8,96 @@ and open the template in the editor.
     Author     : Gold
 */
 
+/*----- Aspectos generales - INICIO -----*/
+
 :root{
     --fuente: 'Kanit', sans-serif;
+    --fontsml: 1rem;
+    --fontlrg: 1.5rem;
+    --fontxl: 2rem;
+    --celeste: #03a9f4;
+    --verde: #00a644;
+    --morado: #7b1fa2;
 }
 
 body{
     background-color: #1e1e1e;
 }
 
+.titulos{
+    text-align: center;
+    font-family: var(--fuente);
+    font-size: var(--fontxl);
+    margin: 0.5rem;
+    color: whitesmoke;
+}
+
+a:link, a:visited, a:active {
+    text-decoration:none;
+}
+
+.boton-tipo1{
+    margin: 2rem;
+    padding: 0.5rem 1.5rem;
+    
+    font-family: var(--fuente);
+    font-size: var(--fontlrg);    
+    text-decoration: none;
+    
+    color: whitesmoke;    
+    background: var(--celeste);
+    
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    
+    transition: 0.25s;
+}
+
+.boton-tipo2{
+    margin: 2rem;
+    padding: 0.5rem 1.5rem;
+    
+    font-family: var(--fuente);
+    font-size: var(--fontlrg);    
+    text-decoration: none;
+    
+    color: whitesmoke;    
+    background: var(--verde);
+    
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    
+    transition: 0.25s;
+}
+
+.boton-tipo1:hover, .boton-tipo2:hover{
+    background: whitesmoke;
+    color: black;
+}
+
+.indicador{
+    font-family: var(--fuente);
+    color: whitesmoke;
+    padding: 0;
+    margin: 0 0 2px 2px;
+}
+
+
+/*----- Aspectos generales - FIN -----*/
+
+
+
+
+
+
+
+
+/*----- Barra de navegación - INICIO -----*/
 
 .barra-de-navegacion{
-    position: sticky;
+    position: sticky;    
 }
 
 .navbar{
@@ -27,3 +106,85 @@ body{
     background: #03a9f4;
     background: linear-gradient(0deg, #03a9f4 0%, #006aa4 100%);
 }
+
+
+/*----- Barra de navegación - FIN -----*/
+
+
+
+
+
+
+
+/*----- Página de inicio - INICIO -----*/
+
+.pagina-inicio{
+    padding: 1rem;
+}
+
+.pagina-inicio .titulo-bienvenida{
+    font-size: var(--fontlrg);
+    text-align: center;
+    color: whitesmoke;
+}
+
+.pagina-inicio .links-ingreso{
+    display: flex;
+    
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+/*----- Página de inicio - FIN -----*/
+
+
+
+
+
+
+
+/*----- Formulario de registro - INICIO -----*/
+
+.bloque-formulario{
+    margin-top: 1.5rem;
+    min-width: 200px;
+    max-width: 400px;
+}
+
+.bloque-formulario{
+    background: rgb(15,15,15);
+    background: linear-gradient(-217deg, rgba(15,15,15,1) 0%, #006da8 50%, rgb(15, 15, 15) 100%);
+    
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.bloque-formulario .formulario-registro form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;    
+}
+
+.bloque-formulario .formulario-registro label{
+    border-radius: 10px;
+    width: 100%;
+    padding: 10px;
+}
+
+.bloque-formulario .formulario-registro label input{
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+}
+
+.bloque-formulario .formulario-registro .boton-registro{
+    display: flex;
+    justify-content: center;
+}
+
+
+/*----- Formulario de registro - FIN -----*/
