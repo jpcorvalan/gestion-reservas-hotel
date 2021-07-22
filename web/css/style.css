@@ -8,3 +8,22 @@ and open the template in the editor.
     Author     : Gold
 */
 
+:root{
+    --fuente: 'Kanit', sans-serif;
+}
+
+body{
+    background-color: #1e1e1e;
+}
+
+
+.barra-de-navegacion{
+    position: sticky;
+}
+
+.navbar{
+    font-family: var(--fuente);
+    
+    background: #03a9f4;
+    background: linear-gradient(0deg, #03a9f4 0%, #006aa4 100%);
+}
