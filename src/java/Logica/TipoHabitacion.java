@@ -44,7 +44,7 @@ public class TipoHabitacion implements Serializable {
     private int cantidadPersonas;
     
     @Basic
-    @Column(name = "descripcion")
+    @Column(name = "descripcion", columnDefinition = "TEXT")
     private String descripcion;
     
     
