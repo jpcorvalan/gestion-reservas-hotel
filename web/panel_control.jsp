@@ -17,7 +17,7 @@
             
             <p class="titulos">Panel de control</p>
             
-            <a href="" class="boton-rojo">Registrar huésped</a>
+            <a href="huesped_form.jsp" class="boton-rojo">Registrar huésped</a>
             <a href="" class="boton-rojo">Reservar habitación</a>
             <a href="" class="boton-rojo">Agregar nuevo tipo de habitación</a>
             <a href="" class="boton-rojo">Agregar habitación nueva</a>
