@@ -14,7 +14,7 @@
         
         <div class="container bloque-formulario-celeste animate__animated animate__backInUp">
             
-            <h2 class="titulos">Formulario para reservar habitacion</h2>
+            <h2 class="titulos">Registrar nueva temática de habitación</h2>
             
             <div class="formulario">
                 
