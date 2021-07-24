@@ -12,7 +12,7 @@
 <main>
     <section>
         
-        <div class="container bloque-formulario-morado animate__animated animate__fadeInUp">
+        <div class="container bloque-formulario-morado animate__animated animate__backInUp">
             
             <h2 class="titulos">Formulario para registrar un huésped</h2>
             

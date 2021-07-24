@@ -219,7 +219,7 @@ a:link, a:visited, a:active {
     padding: 10px;
 }
 
-.formulario label input{
+.formulario label input, .formulario label select{
     width: 100%;
     padding: 8px;
     border-radius: 5px;
