@@ -13,7 +13,7 @@
     
     <section class="pagina-login">
         
-        <div class="container bloque-formulario animate__animated animate__fadeInUp">
+        <div class="container bloque-formulario-morado animate__animated animate__fadeInUp">
             
             <h2 class="titulos">Ingresar</h2>
             
@@ -32,7 +32,11 @@
                     </label>
                     
                     <div class="boton">
-                        <input class="boton-tipo2" type="submit" value="Ingresar">
+                        <input class="boton-verde" type="submit" value="Ingresar">
+                    </div>
+                    
+                    <div class="boton">
+                        <p class="indicador text-center">Si aún no posee una cuenta, puede <a href="registro.jsp">REGISTRARSE</a></p>
                     </div>
                     
                     

@@ -18,6 +18,7 @@ and open the template in the editor.
     --celeste: #03a9f4;
     --verde: #00a644;
     --morado: #7b1fa2;
+    --rojo: #c20000;
 }
 
 body{
@@ -36,13 +37,14 @@ a:link, a:visited, a:active {
     text-decoration:none;
 }
 
-.boton-tipo1{
+.boton-celeste{
     margin: 2rem;
     padding: 0.5rem 1.5rem;
     
     font-family: var(--fuente);
     font-size: var(--fontlrg);    
     text-decoration: none;
+    text-align: center;
     
     color: whitesmoke;    
     background: var(--celeste);
@@ -54,7 +56,7 @@ a:link, a:visited, a:active {
     transition: 0.25s;
 }
 
-.boton-tipo2{
+.boton-verde{
     margin: 2rem;
     padding: 0.5rem 1.5rem;
     
@@ -72,9 +74,41 @@ a:link, a:visited, a:active {
     transition: 0.25s;
 }
 
-.boton-tipo1:hover, .boton-tipo2:hover{
+.boton-rojo{    
+    margin: 0.5rem;
+    padding: 0.5rem;
+    
+    font-family: var(--fuente);
+    font-size: var(--fontlrg);
+    text-align: center;
+
+    color: whitesmoke;
+    
+    background: var(--rojo);
+
+    border-radius: 10px;
+    border: solid 0.1rem whitesmoke;
+
+    width: 95%;
+    
+    transition: 0.25s;
+}
+
+.boton-celeste:hover, .boton-verde:hover{
     background: whitesmoke;
     color: black;
+}
+
+.boton-rojo:hover{    
+    color: whitesmoke;
+    font-size: 1.56rem;
+    padding: 0.7rem;
+    
+    border: solid 0.213rem whitesmoke;
+    
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
 }
 
 .indicador{
@@ -147,33 +181,45 @@ a:link, a:visited, a:active {
 
 /*----- Formularios - INICIO -----*/
 
-.bloque-formulario{
+.bloque-formulario-celeste{
+    background: rgb(15,15,15);
+    background: linear-gradient(-217deg, rgba(15,15,15,1) 0%, #006da8 50%, rgb(15, 15, 15) 100%);    
+    
+    padding: 1rem;    
     margin-top: 1.5rem;
+    
     min-width: 200px;
     max-width: 400px;
-}
-
-.bloque-formulario{
-    background: rgb(15,15,15);
-    background: linear-gradient(-217deg, rgba(15,15,15,1) 0%, #006da8 50%, rgb(15, 15, 15) 100%);
     
-    padding: 1rem;
     border-radius: 10px;
 }
 
-.bloque-formulario .formulario form{
+.bloque-formulario-morado{
+    background: #7b1fa2;
+    background: linear-gradient(0deg, rgb(63, 16, 83) 0%, rgb(110, 27, 124) 100%);
+    
+    padding: 1rem;    
+    margin-top: 1.5rem;
+    
+    min-width: 200px;
+    max-width: 400px;
+    
+    border-radius: 10px;
+}
+
+.formulario form{
     display: flex;
     flex-direction: column;
     justify-content: center;    
 }
 
-.bloque-formulario .formulario label{
+.formulario label{
     border-radius: 10px;
     width: 100%;
     padding: 10px;
 }
 
-.bloque-formulario .formulario label input{
+.formulario label input{
     width: 100%;
     padding: 8px;
     border-radius: 5px;
@@ -181,10 +227,69 @@ a:link, a:visited, a:active {
     outline: none;
 }
 
-.bloque-formulario .formulario .boton{
+.formulario .boton{
     display: flex;
     justify-content: center;
 }
 
 
 /*----- Formularios - FIN -----*/
+
+
+
+
+
+
+
+
+
+/*----- Panel de control - INICIO -----*/
+
+.panel-control{
+    display: flex;
+    flex-direction: column;
+    
+    align-items: center;
+    justify-content: space-around;
+
+    min-height: 80vh;
+
+    padding: 0;
+}
+
+/*----- Panel de control - FIN -----*/
+
+
+
+
+
+
+
+
+
+/*----- MEDIA QUERIES - 1024px -----*/
+
+@media(min-width: 768px){
+    
+.boton-rojo{    
+    margin: 0.5rem;
+    padding: 0.5rem;
+    
+    font-family: var(--fuente);
+    font-size: var(--fontlrg);
+    text-align: center;
+
+    color: whitesmoke;
+    background: var(--rojo);
+
+    border-radius: 10px;
+    border: solid 0.213rem whitesmoke;
+
+    width: 70%;
+    
+    transition: 0.25s;
+}
+    
+    
+    
+}

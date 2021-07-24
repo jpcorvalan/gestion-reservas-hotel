@@ -13,7 +13,7 @@
     
     <section class="pagina-registro">
         
-        <div class="container bloque-formulario animate__animated animate__fadeInUp">
+        <div class="container bloque-formulario-celeste animate__animated animate__fadeInUp">
             
             <h2 class="titulos">Registrarse</h2>
             
@@ -57,11 +57,11 @@
                     </label>
                     
                     <div class="boton">
-                        <input class="boton-tipo2" type="submit" value="Registrarme">
+                        <input class="boton-verde" type="submit" value="Registrarme">
                     </div>
                     
                     <div class="boton">
-                        <p class="indicador">Si ya posee una cuenta, puede <a href="login.jsp">INGRESAR</a></p>
+                        <p class="indicador text-center">Si ya posee una cuenta, puede <a href="login.jsp">INGRESAR</a></p>
                     </div>
                     
                     

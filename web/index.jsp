@@ -18,8 +18,9 @@
             <h3 class="titulo-bienvenida">¡Hola!<br><br>Bienvenido a la aplicación de administración de reservas del hotel.<br>Por favor, seleccione la opción a realizar:</h3>
             
             <div class="links-ingreso">
-                <a class="boton-tipo1" href="login.jsp">Ingresar</a>
-                <a class="boton-tipo1" href="registro.jsp">Registrarse</a>
+                <a class="boton-celeste" href="login.jsp">Ingresar</a>
+                <a class="boton-celeste" href="registro.jsp">Registrarse</a>
+                <a class="boton-celeste" href="panel_control.jsp">Panel de control</a>
             </div>
             
             
