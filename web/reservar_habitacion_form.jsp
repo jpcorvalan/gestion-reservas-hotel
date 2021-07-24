@@ -46,7 +46,7 @@
                 
                 <label for="">
                     <p class="indicador">Ingrese la cantidad de personas</p>
-                    <input name="checkout" class="campos" type="number" placeholder="Cantidad de personas" autocomplete="off">
+                    <input name="cantidad-personas" class="campos" type="number" placeholder="Cantidad de personas" autocomplete="off">
                 </label>                
                 
                 <div class="boton">
