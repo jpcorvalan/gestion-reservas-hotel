@@ -5,10 +5,23 @@
  */
 package Persistencia;
 
+import Logica.CargoEmpleado;
+import java.util.List;
+
 /**
  *
  * @author Gold
  */
 public class CargoEmpleadoPersistenciaControlador {
+    
+    CargoEmpleadoJpaController cargoEmpJpa = new CargoEmpleadoJpaController();
+    
+    public void agregarNuevoCargoEmpleado(CargoEmpleado cargo){
+        cargoEmpJpa.create(cargo);
+    }
+    
+    public List<CargoEmpleado> obtenerTodosLosCargos(){
+        return cargoEmpJpa.findCargoEmpleadoEntities();
+    }
     
 }

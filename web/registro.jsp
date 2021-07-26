@@ -4,10 +4,14 @@
     Author     : Gold
 --%>
 
+<%@page import="Logica.CargoEmpleadoControlador"%>
+<%@page import="Logica.CargoEmpleado"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%@include file = "plantillas/head.jsp" %>
 <%@include file = "plantillas/navbar.jsp" %>
+
+<% CargoEmpleadoControlador control = new CargoEmpleadoControlador(); %>
 
 <main>
     
@@ -54,6 +58,19 @@
                     <label for="">
                         <p class="indicador">Ingrese su dirección</p>
                         <input name="direccion" class="campos" type="text" placeholder="Ingrese su dirección" autocomplete="off">
+                    </label>
+                    
+                    <label for="">
+                        <p class="indicador">Ingrese el cargo que ocupa</p>
+                        <select name="cargo" id="">
+                            
+                            <% for(CargoEmpleado cargo : control.obtenerTodosLosCargos()) { %>
+                            
+                                    <option value="<%= cargo.getId() %>"><%= cargo.getNombreCargo()%> </option>
+                                    
+                            <% } %>
+                            
+                        </select>
                     </label>
                     
                     <div class="boton">

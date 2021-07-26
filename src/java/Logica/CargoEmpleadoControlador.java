@@ -5,10 +5,27 @@
  */
 package Logica;
 
+import Persistencia.CargoEmpleadoPersistenciaControlador;
+import java.util.List;
+
 /**
  *
  * @author Gold
  */
 public class CargoEmpleadoControlador {
+    
+    CargoEmpleadoPersistenciaControlador control = new CargoEmpleadoPersistenciaControlador();
+    
+    public void crearNuevoCargoDeEmpleado(String nombre){
+        CargoEmpleado cargo = new CargoEmpleado();
+        
+        cargo.setNombreCargo(nombre);
+        
+        control.agregarNuevoCargoEmpleado(cargo);
+    }
+    
+    public List<CargoEmpleado> obtenerTodosLosCargos(){
+        return control.obtenerTodosLosCargos();
+    }
     
 }
