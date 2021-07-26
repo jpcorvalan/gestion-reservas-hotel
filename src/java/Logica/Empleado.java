@@ -38,7 +38,6 @@ public class Empleado extends Persona implements Serializable{
     private String password;
     
     @OneToOne
-    @Column(name = "cargo")
     private CargoEmpleado cargo;
     
     @Basic

@@ -4,10 +4,14 @@
     Author     : Gold
 --%>
 
+<%@page import="Logica.HabitacionControlador"%>
+<%@page import="Logica.TipoHabitacion"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%@include file = "plantillas/head.jsp" %>
 <%@include file = "plantillas/navbar.jsp" %>
+
+<% HabitacionControlador control = new HabitacionControlador(); %>
 
 <main>
     <section>
@@ -18,29 +22,34 @@
             
             <div class="formulario">
                 
-                <label for="">
-                    <p class="indicador">Piso donde se encuentra la habitación</p>
-                    <input name="piso" class="campos" type="number" placeholder="Ingrese el piso" autocomplete="off">
-                </label>
-                
-                <label for="">
-                    <p class="indicador">Costo</p>
-                    <input name="precio" class="campos" type="number" placeholder="Ingrese el costo de la habitación" autocomplete="off">
-                </label>      
-                
-                <label for="">
-                    <p class="indicador">Seleccione la temática</p>
-                    <select name="" id="">
-                        <option value="tematica">Single</option>
-                        <option value="tematica">Doble</option>
-                        <option value="tematica">Triple</option>
-                        <option value="tematica">Cuádruple</option>
-                    </select>
-                </label>      
-                
-                <div class="boton">
-                    <input class="boton-verde" type="submit" value="Registrar nueva habitación">
-                </div>
+                <form action="SvtNuevaHabitacion" method="POST">
+
+                    <label for="">
+                        <p class="indicador">Piso donde se encuentra la habitación</p>
+                        <input name="piso" class="campos" type="number" placeholder="Ingrese el piso" autocomplete="off">
+                    </label>
+
+                    <label for="">
+                        <p class="indicador">Costo</p>
+                        <input name="costo" class="campos" type="number" placeholder="Ingrese el costo de la habitación" autocomplete="off">
+                    </label>      
+
+                    <label for="">
+                        <p class="indicador">Seleccione la temática</p>
+                        <select name="tematica" id="">
+                            <% for(TipoHabitacion tematica : control.tematicas()){ %>
+
+                                <option value="<%= tematica.getId() %>"><%= tematica.getNombreHabitacion() %></option>
+
+                            <% } %>
+                        </select>
+                    </label>      
+
+                    <div class="boton">
+                        <input class="boton-verde" type="submit" value="Registrar nueva habitación">
+                    </div>
+                    
+                </form>
                 
             </div>
             

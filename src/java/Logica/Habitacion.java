@@ -40,7 +40,6 @@ public class Habitacion implements Serializable {
     private double precio;
     
     @OneToOne
-    @Column(name = "tematica")
     private TipoHabitacion tematica;
     
     

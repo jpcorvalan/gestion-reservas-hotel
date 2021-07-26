@@ -46,15 +46,12 @@ public class Reserva implements Serializable {
     private int cantPersonas;
     
     @OneToOne
-    @Column(name = "habitacion")
     private Habitacion habitacion;
     
     @OneToOne
-    @Column(name = "huesped")
     private Persona huesped;
     
     @OneToOne
-    @Column(name = "usuario_alta")
     private Persona usuarioAlta;
     
     @Basic

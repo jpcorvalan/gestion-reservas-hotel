@@ -118,6 +118,13 @@ a:link, a:visited, a:active {
     margin: 0 0 2px 2px;
 }
 
+.formulario-link{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;    
+}
+
 
 /*----- Aspectos generales - FIN -----*/
 
@@ -280,12 +287,13 @@ a:link, a:visited, a:active {
     text-align: center;
 
     color: whitesmoke;
+    
     background: var(--rojo);
 
     border-radius: 10px;
-    border: solid 0.213rem whitesmoke;
+    border: solid 0.1rem whitesmoke;
 
-    width: 70%;
+    width: 65%;
     
     transition: 0.25s;
 }
