@@ -272,6 +272,24 @@ a:link, a:visited, a:active {
 
 
 
+/*----- Vista de Carga exitosa -----*/
+
+.carga-exitosa{
+    min-height: 80vh;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    justify-content: space-around;    
+}
+
+
+
+
+
+
+
 
 
 /*----- MEDIA QUERIES - 1024px -----*/

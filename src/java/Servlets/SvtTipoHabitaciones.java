@@ -72,7 +72,7 @@ public class SvtTipoHabitaciones extends HttpServlet {
         
         control.crearTematicaHabitacion(tipoHab, cantPersonas, descripcion);
         
-        
+        response.sendRedirect("carga_exitosa_view.jsp");
     }
 
     /**

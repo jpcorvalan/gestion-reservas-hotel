@@ -95,6 +95,7 @@ public class SvtHuesped extends HttpServlet {
             
             control.crearHuesped(dni, nombre, apellido, fechaNacimiento, direccion, profesion);
             
+            response.sendRedirect("carga_exitosa_view.jsp");
             
             
         } catch (ParseException ex) {

@@ -84,7 +84,7 @@ public class SvtNuevaHabitacion extends HttpServlet {
         
         control.crearNuevaHabitacion(numHab, piso, precio, idTematica);
 
-        response.sendRedirect("panel_control.jsp");
+        response.sendRedirect("carga_exitosa_view.jsp");
         
     }
 
