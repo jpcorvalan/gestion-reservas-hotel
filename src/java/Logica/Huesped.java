@@ -22,7 +22,6 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "huespedes")
-@PrimaryKeyJoinColumn(referencedColumnName = "id_persona")
 public class Huesped extends Persona implements Serializable {
     
     // Variables de instancia

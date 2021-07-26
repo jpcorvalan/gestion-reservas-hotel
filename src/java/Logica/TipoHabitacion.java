@@ -25,7 +25,7 @@ import javax.persistence.Table;
  * @author Corvalán Juan Pablo
  */
 @Entity
-@Table(name = "tipos_habitacion")
+@Table(name = "tematicas_habitacion")
 public class TipoHabitacion implements Serializable {
     
     
@@ -44,7 +44,7 @@ public class TipoHabitacion implements Serializable {
     private int cantidadPersonas;
     
     @Basic
-    @Column(name = "descripcion")
+    @Column(name = "descripcion", columnDefinition = "TEXT")
     private String descripcion;
     
     

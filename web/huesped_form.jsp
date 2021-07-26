@@ -18,7 +18,7 @@
             
             <div class="formulario">
                 
-                <form method="post" action="">
+                <form method="post" action="SvtHuesped">
                     
                     <label for="">
                         <p class="indicador">Ingrese nombre</p>
