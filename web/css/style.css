@@ -37,6 +37,11 @@ a:link, a:visited, a:active {
     text-decoration:none;
 }
 
+input{
+    outline: none;
+    border: none;
+}
+
 .boton-celeste{
     margin: 2rem;
     padding: 0.5rem 1.5rem;
@@ -87,7 +92,47 @@ a:link, a:visited, a:active {
     background: var(--rojo);
 
     border-radius: 10px;
-    border: solid 0.1rem whitesmoke;
+    /*border: solid 0.1rem whitesmoke;*/
+
+    width: 95%;
+    
+    transition: 0.25s;
+}
+
+.boton-morado{    
+    margin: 0.5rem;
+    padding: 0.5rem;
+    
+    font-family: var(--fuente);
+    font-size: var(--fontlrg);
+    text-align: center;
+
+    color: whitesmoke;
+    
+    background: rgb(0,166,68);
+    background: linear-gradient(0deg, rgba(0,166,68,1) 0%, rgba(28,65,47,1) 100%);
+
+    border-radius: 10px;
+    /*border: solid 0.1rem whitesmoke;*/
+
+    width: 95%;
+    
+    transition: 0.25s;
+}
+
+.boton-verdev2{    
+    margin: 0.5rem;
+    padding: 0.5rem;
+    
+    font-family: var(--fuente);
+    font-size: var(--fontlrg);
+    text-align: center;
+
+    color: whitesmoke;    
+    background: var(--verde);
+
+    border-radius: 10px;
+    /*border: solid 0.1rem whitesmoke;*/
 
     width: 95%;
     
@@ -99,10 +144,12 @@ a:link, a:visited, a:active {
     color: black;
 }
 
-.boton-rojo:hover{    
+.boton-rojo:hover, .boton-morado:hover, .boton-verdev2:hover{    
     color: whitesmoke;
     font-size: 1.56rem;
     padding: 0.7rem;
+    
+    text-decoration: none;
     
     border: solid 0.213rem whitesmoke;
     
@@ -116,6 +163,22 @@ a:link, a:visited, a:active {
     color: whitesmoke;
     padding: 0;
     margin: 0 0 2px 2px;
+}
+
+.fondo-celeste{
+    background: rgb(15,15,15);
+    background: linear-gradient(-217deg, rgba(15,15,15,1) 0%, #006da8 50%, rgb(15, 15, 15) 100%); 
+    
+    border-radius: 10px;
+}
+
+.fondo-negro{
+    background: rgb(0,0,0);
+    background: linear-gradient(-217deg, rgba(0,0,0,1) 0%, rgba(30,30,30,1) 50%, rgba(0,0,0,1) 100%);
+    
+    border: solid black 5px;
+    
+    border-radius: 10px;
 }
 
 .formulario-link{
@@ -257,11 +320,12 @@ a:link, a:visited, a:active {
     flex-direction: column;
     
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
 
     min-height: 80vh;
 
     padding: 0;
+    margin-top: 20px;
 }
 
 /*----- Panel de control - FIN -----*/
@@ -292,9 +356,66 @@ a:link, a:visited, a:active {
 
 
 
+/*----- MEDIA QUERIES - 768px*/
+@media(min-width: 768px){
+
+.boton-rojo{    
+    margin: 0.5rem;
+    padding: 0.5rem;
+    
+    font-family: var(--fuente);
+    font-size: var(--fontlrg);
+    text-align: center;
+
+    color: whitesmoke;
+    
+    background: var(--rojo);
+
+    border-radius: 10px;
+    /*border: solid 0.1rem whitesmoke;*/
+
+    width: 65%;
+    
+    transition: 0.25s;
+}    
+
+.boton-verdev2{    
+    margin: 0.5rem;
+    padding: 0.5rem;
+    
+    font-family: var(--fuente);
+    font-size: var(--fontlrg);
+    text-align: center;
+
+    color: whitesmoke;    
+    background: var(--verde);
+
+    border-radius: 10px;
+    /*border: solid 0.1rem whitesmoke;*/
+
+    width: 65%;
+    
+    transition: 0.25s;
+}
+
+.panel-control{
+    margin: 1rem;
+}
+    
+
+}
+
+
+
+
+
+
+
+
+
 /*----- MEDIA QUERIES - 1024px -----*/
 
-@media(min-width: 768px){
+@media(min-width: 1024px){
     
 .boton-rojo{    
     margin: 0.5rem;
@@ -309,12 +430,54 @@ a:link, a:visited, a:active {
     background: var(--rojo);
 
     border-radius: 10px;
-    border: solid 0.1rem whitesmoke;
+    /*border: solid 0.1rem whitesmoke;*/
 
     width: 65%;
     
     transition: 0.25s;
 }
+
+
+
+
+
+
+
+/*----- Panel General - INICIO -----*/
+
+.panel-general{
+    display: flex;
+    flex-direction: row;
+    
+    justify-content: center;    
+}
+
+/*----- Panel General - FIN -----*/
+
+
+
+
+
+
+
+
+/*----- Panel de control - INICIO -----*/
+
+.panel-control{
+    display: flex;
+    flex-direction: column;
+    
+    align-items: center;
+    justify-content: space-evenly;
+
+    min-height: 80vh;
+    width: 48%;
+
+    padding: 0;
+    margin: 10px;
+}
+
+/*----- Panel de control - FIN -----*/
     
     
     

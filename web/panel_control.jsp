@@ -11,11 +11,13 @@
 
 <main>
     
-    <section>
+    <h2 class="titulos">Panel de control</h2>
+    
+    <section class="panel-general">
         
-        <div class="container panel-control">
+        <div class="panel-control fondo-negro">
             
-            <p class="titulos">Panel de control</p>
+            <h2 class="titulos">Registrar datos</h2>
             
             <a href="huesped_form.jsp" class="boton-rojo">Registrar huésped</a>
             <a href="reservar_habitacion_form.jsp" class="boton-rojo">Reservar habitación</a>
@@ -23,6 +25,20 @@
             
             <form action="SvtPrecargaTipoHabitaciones" method="POST" class="formulario-link">
                 <input type="submit" class="boton-rojo" value="Agregar habitación nueva">
+            </form>
+            
+        </div>
+        
+        <div class="panel-control fondo-negro">
+            
+            <h2 class="titulos">Consultar datos existentes</h2>
+            
+            <a href="huesped_form.jsp" class="boton-verdev2">Ver todos los huéspedes</a>
+            <a href="reservar_habitacion_form.jsp" class="boton-verdev2">Verificar todas las reservas</a>
+            <a href="tipo_habitacion_form.jsp" class="boton-verdev2">Ver ganancias diarias</a>
+            
+            <form action="SvtPrecargaTipoHabitaciones" method="POST" class="formulario-link">
+                <input type="submit" class="boton-verdev2" value="Ver ganancias mensuales">                
             </form>
             
         </div>
