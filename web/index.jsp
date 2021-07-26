@@ -25,8 +25,7 @@
                 </form>
                 <a class="boton-celeste" href="panel_control.jsp">Panel de control</a>
                 
-            </div>
-            
+            </div>            
             
         </div>
         

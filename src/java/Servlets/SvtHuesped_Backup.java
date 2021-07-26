@@ -6,7 +6,6 @@
 package Servlets;
 
 import Logica.HuespedControlador;
-import Logica.ManejadorDeFechas;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
@@ -26,7 +25,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author Gold
  */
 @WebServlet(name = "SvtHuesped", urlPatterns = {"/SvtHuesped"})
-public class SvtHuesped extends HttpServlet {
+public class SvtHuesped_Backup extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -89,7 +88,25 @@ public class SvtHuesped extends HttpServlet {
             String direccion = request.getParameter("direccion");
             String profesion = request.getParameter("profesion");
             
-            Calendar fechaNacimiento = ManejadorDeFechas.conversorACalendar(fechaNacString);
+            
+            
+            /*----- Obtención y conversión de la fecha, de String a Date, y de Date a Calendar -----*/
+            
+                // Se crea el formato de la fecha. En la base de datos se guardan las fechas con formato yyyy-MM-dd
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");            
+
+                // Se toma el String obtenido del formulario con la fecha y se lo convierte a Date
+                Date dateFormateado = sdf.parse(fechaNacString);
+
+                // Se crea una variable de tipo Calendar con fecha actual para ser modificado luego
+                Calendar fechaNacimiento = Calendar.getInstance();
+
+                // Se modifica la variable Calendar, agregándole la fecha del Date al mismo
+                fechaNacimiento.setTime(dateFormateado);
+                
+            /*----- Obtención y conversión de la fecha, de String a Date, y de Date a Calendar - FIN -----*/
+            
+            
             
             HuespedControlador control = new HuespedControlador();
             
@@ -98,7 +115,7 @@ public class SvtHuesped extends HttpServlet {
             
             
         } catch (ParseException ex) {
-            Logger.getLogger(SvtHuesped.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SvtHuesped_Backup.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }
