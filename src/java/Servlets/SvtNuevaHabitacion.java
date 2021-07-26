@@ -76,12 +76,13 @@ public class SvtNuevaHabitacion extends HttpServlet {
             throws ServletException, IOException {
         
         int piso = Integer.parseInt(request.getParameter("piso"));
+        int numHab = Integer.parseInt(request.getParameter("nro-habitacion"));
         double precio = Double.parseDouble(request.getParameter("costo"));
         int idTematica = Integer.parseInt(request.getParameter("tematica"));
         
         HabitacionControlador control = new HabitacionControlador();
         
-        control.crearNuevaHabitacion(piso, precio, idTematica);
+        control.crearNuevaHabitacion(numHab, piso, precio, idTematica);
 
         response.sendRedirect("panel_control.jsp");
         

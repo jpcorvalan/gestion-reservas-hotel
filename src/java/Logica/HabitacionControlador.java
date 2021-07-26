@@ -39,9 +39,10 @@ public class HabitacionControlador {
     
     
     
-    public void crearNuevaHabitacion(int piso, double costo, int tematica){
+    public void crearNuevaHabitacion(int numHab, int piso, double costo, int tematica){
         Habitacion habitacion = new Habitacion();
         
+        habitacion.setNroHabitacion(numHab);
         habitacion.setPiso(piso);
         habitacion.setPrecio(costo);
         habitacion.setTematica(this.obtenerHabitacionPorId(tematica));

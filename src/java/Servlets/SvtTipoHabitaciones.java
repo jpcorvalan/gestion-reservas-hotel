@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Gold
  */
-@WebServlet(name = "SvtTest", urlPatterns = {"/SvtTest"})
+@WebServlet(name = "SvtTipoHabitaciones", urlPatterns = {"/SvtTipoHabitaciones"})
 public class SvtTipoHabitaciones extends HttpServlet {
 
     /**

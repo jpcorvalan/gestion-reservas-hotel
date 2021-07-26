@@ -30,6 +30,11 @@
                     </label>
 
                     <label for="">
+                        <p class="indicador">Número de la habitación</p>
+                        <input name="nro-habitacion" class="campos" type="number" placeholder="Ingrese el número de la habitación" autocomplete="off">
+                    </label>
+
+                    <label for="">
                         <p class="indicador">Costo</p>
                         <input name="costo" class="campos" type="number" placeholder="Ingrese el costo de la habitación" autocomplete="off">
                     </label>      
