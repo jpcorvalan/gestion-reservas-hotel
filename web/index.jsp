@@ -22,7 +22,7 @@
                 <form action="SvtCargoEmp" method="POST" class="formulario-link">
                     <input type="submit" class="boton-celeste" value="Registrarse">
                 </form>
-                <a class="boton-celeste" href="panel_control.jsp">Panel de control</a>
+                <!--<a class="boton-celeste" href="panel_control.jsp">Panel de control</a>-->
                 
             </div>            
             

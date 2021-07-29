@@ -5,14 +5,8 @@
  */
 package Servlets;
 
-import Logica.EmpleadoControlador;
-import Logica.ManejadorDeFechas;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.text.ParseException;
-import java.util.Calendar;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,8 +17,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Gold
  */
-@WebServlet(name = "SvtRegistroEmpleado", urlPatterns = {"/SvtRegistroEmpleado"})
-public class SvtRegistroEmpleado extends HttpServlet {
+@WebServlet(name = "SvtCerrarSesion", urlPatterns = {"/SvtCerrarSesion"})
+public class SvtCerrarSesion extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,6 +33,16 @@ public class SvtRegistroEmpleado extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet SvtCerrarSesion</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet SvtCerrarSesion at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 
@@ -69,30 +73,9 @@ public class SvtRegistroEmpleado extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        try {
-            String usuario = request.getParameter("usuario");
-            String password = request.getParameter("password");
-            String nombre = request.getParameter("nombre");
-            String apellido = request.getParameter("apellido");
-            String dni = request.getParameter("dni");
-            String fechaNacString = request.getParameter("nacimiento");
-            String direccion = request.getParameter("direccion");
-            int cargo = Integer.parseInt(request.getParameter("cargo"));
-            
-            Calendar fechaNacimiento = ManejadorDeFechas.conversorACalendar(fechaNacString);
-            
-            EmpleadoControlador empControl = new EmpleadoControlador();
-            
-            empControl.registrarUsuarioEmpleado(usuario, password, nombre, apellido, dni, fechaNacimiento, direccion, cargo);
-            
-            response.sendRedirect("login.jsp");
-            
-            
-        } catch (ParseException ex) {
-            Logger.getLogger(SvtRegistroEmpleado.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        request.getSession().invalidate();
         
-        
+        response.sendRedirect("index.jsp");
         
     }
 

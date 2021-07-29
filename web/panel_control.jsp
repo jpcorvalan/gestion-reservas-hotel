@@ -4,13 +4,18 @@
     Author     : Gold
 --%>
 
-
 <%@include file = "plantillas/head.jsp" %>
 <%@include file = "plantillas/navbar.jsp" %>
 
+<% 
+    if(usuario == null) { 
+        response.sendRedirect("login.jsp");
+    }
+%>
+
 <main>
     
-    <h2 class="titulos">Panel de control</h2>
+    <h2 class="titulos">Bienvenido <%= nombre%>, ¿qué desea hacer?</h2>
     
     <section class="panel-general">
         

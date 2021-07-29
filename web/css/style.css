@@ -188,6 +188,22 @@ input{
     width: 100%;    
 }
 
+.mensaje-error{
+    
+    font-family: 'Kanit', sans-serif;   
+    color: whitesmoke;    
+    font-size: 1rem;
+    text-align: center;
+    
+    background: rgb(72,4,3);
+    background: linear-gradient(315deg, rgba(72,4,3,1) 0%, rgba(194,0,0,1) 100%);
+    border: solid 1px whitesmoke;
+    border-radius: 7px;
+
+    margin: 0;
+    padding: 5px;    
+}
+
 
 /*----- Aspectos generales - FIN -----*/
 
@@ -209,6 +225,20 @@ input{
     
     background: #03a9f4;
     background: linear-gradient(0deg, #03a9f4 0%, #006aa4 100%);
+}
+
+.boton-navbar{
+    color: black;
+    border-radius: 15px;
+    
+    font-size: 1.2rem;
+    
+    transition: 0.25s;
+}
+
+.boton-navbar:hover{
+    background-color: #03a9f4;
+    color: black;
 }
 
 

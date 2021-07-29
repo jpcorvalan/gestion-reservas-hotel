@@ -3,12 +3,18 @@
     Created on : 24 jul. 2021, 11:00:59
     Author     : Gold
 --%>
+<%@include file = "plantillas/head.jsp" %>
+<%@include file = "plantillas/navbar.jsp" %>
+
+<% 
+    if(usuario == null) { 
+        response.sendRedirect("login.jsp");
+    }
+%>
 
 <%@page import="Logica.HabitacionControlador"%>
 <%@page import="Logica.TipoHabitacion"%>
 
-<%@include file = "plantillas/head.jsp" %>
-<%@include file = "plantillas/navbar.jsp" %>
 
 <% HabitacionControlador control = new HabitacionControlador(); %>
 

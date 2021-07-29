@@ -6,6 +6,7 @@
 package Persistencia;
 
 import Logica.Empleado;
+import java.util.List;
 
 /**
  *
@@ -17,6 +18,11 @@ public class EmpleadoPersistenciaControlador {
     
     public void agregarUsuarioEmpleado(Empleado emp){
         empleadoJpa.create(emp);
+    }
+    
+    
+    public List<Empleado> obtenerTodosLosEmpleados(){
+        return empleadoJpa.findEmpleadoEntities();
     }
     
 }

@@ -8,6 +8,12 @@
 <%@include file = "plantillas/head.jsp" %>
 <%@include file = "plantillas/navbar.jsp" %>
 
+<% 
+    if(usuario == null) { 
+        response.sendRedirect("login.jsp");
+    }
+%>
+
 <main>
     <section>
         

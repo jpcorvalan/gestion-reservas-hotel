@@ -5,26 +5,23 @@
  */
 package Servlets;
 
+import Logica.Empleado;
 import Logica.EmpleadoControlador;
-import Logica.ManejadorDeFechas;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.text.ParseException;
-import java.util.Calendar;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Gold
  */
-@WebServlet(name = "SvtRegistroEmpleado", urlPatterns = {"/SvtRegistroEmpleado"})
-public class SvtRegistroEmpleado extends HttpServlet {
+@WebServlet(name = "SvtLoginEmpleado", urlPatterns = {"/SvtLoginEmpleado"})
+public class SvtLoginEmpleado extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,6 +36,16 @@ public class SvtRegistroEmpleado extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet SvtLoginEmpleado</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet SvtLoginEmpleado at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 
@@ -69,30 +76,31 @@ public class SvtRegistroEmpleado extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        try {
-            String usuario = request.getParameter("usuario");
-            String password = request.getParameter("password");
-            String nombre = request.getParameter("nombre");
-            String apellido = request.getParameter("apellido");
-            String dni = request.getParameter("dni");
-            String fechaNacString = request.getParameter("nacimiento");
-            String direccion = request.getParameter("direccion");
-            int cargo = Integer.parseInt(request.getParameter("cargo"));
+        String usuario = request.getParameter("usuario");
+        String password = request.getParameter("password");
+        
+        EmpleadoControlador empleadoControlador = new EmpleadoControlador();
+        
+        // Verifico que el usuario y la clave brindada estén en la base de datos y devuelve un Empleado si existe
+        Empleado empleado = empleadoControlador.verificarUsuarioEmpleado(usuario, password);
+        
+        // Si el usuario y la clave son válidas, se crea la sesión con los datos del Empleado
+        if(empleado != null){
+            HttpSession sesion = request.getSession(true);
             
-            Calendar fechaNacimiento = ManejadorDeFechas.conversorACalendar(fechaNacString);
+            sesion.setAttribute("usuario", usuario);
+            sesion.setAttribute("password", password);
+            sesion.setAttribute("nombre", empleado.getNombre());
+            sesion.setAttribute("loginError", null);
             
-            EmpleadoControlador empControl = new EmpleadoControlador();
+            response.sendRedirect("panel_control.jsp");
+        }else{
+            HttpSession sesion = request.getSession(true);
             
-            empControl.registrarUsuarioEmpleado(usuario, password, nombre, apellido, dni, fechaNacimiento, direccion, cargo);
+            sesion.setAttribute("loginError", "El usuario o contraseña son inválidos");
             
             response.sendRedirect("login.jsp");
-            
-            
-        } catch (ParseException ex) {
-            Logger.getLogger(SvtRegistroEmpleado.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
         
     }
 

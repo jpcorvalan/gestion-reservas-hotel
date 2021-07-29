@@ -8,6 +8,10 @@
 <%@include file = "plantillas/head.jsp" %>
 <%@include file = "plantillas/navbar.jsp" %>
 
+<%     
+    String loginError = (String) sesion.getAttribute("loginError");
+%>
+
 <main>
     
     <section class="pagina-login">
@@ -18,7 +22,13 @@
             
             <div class="formulario">
                 
-                <form method="post" action="">
+                    <% if(loginError != null) { %>
+                        <label for="">
+                            <p class="mensaje-error"><%= loginError %></p>
+                        </label>
+                    <% } %>
+                
+                <form method="post" action="SvtLoginEmpleado">
                     
                     <label for="">
                         <p class="indicador">Ingrese su usuario</p>

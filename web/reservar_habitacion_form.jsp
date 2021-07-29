@@ -4,11 +4,17 @@
     Author     : Gold
 --%>
 
-<%@page import="Logica.TipoHabitacion"%>
-<%@page import="Logica.HabitacionControlador"%>
-
 <%@include file = "plantillas/head.jsp" %>
 <%@include file = "plantillas/navbar.jsp" %>
+
+<% 
+    if(usuario == null) { 
+        response.sendRedirect("login.jsp");
+    }
+%>
+
+<%@page import="Logica.TipoHabitacion"%>
+<%@page import="Logica.HabitacionControlador"%>
 
 <% HabitacionControlador control = new HabitacionControlador(); %>
 

@@ -7,6 +7,7 @@ package Logica;
 
 import Persistencia.EmpleadoPersistenciaControlador;
 import java.util.Calendar;
+import java.util.List;
 
 /**
  *
@@ -14,13 +15,8 @@ import java.util.Calendar;
  */
 public class EmpleadoControlador {
     
-    EmpleadoPersistenciaControlador control = new EmpleadoPersistenciaControlador();
+    EmpleadoPersistenciaControlador empleadoControlador = new EmpleadoPersistenciaControlador();
     CargoEmpleadoControlador cargoControlador = new CargoEmpleadoControlador();
-    
-    
-    public void buscarEmpleadoPorId(int idCargo){
-        
-    }
     
     public void registrarUsuarioEmpleado(String usuario, String password, String nombre, String apellido, String dni, Calendar fechaNacimiento, String direccion, int idCargo){
         Empleado emp = new Empleado();
@@ -34,8 +30,25 @@ public class EmpleadoControlador {
         emp.setDireccion(direccion);
         emp.setCargo(cargoControlador.obtenerCargoPorId(idCargo));
         
-        control.agregarUsuarioEmpleado(emp);
+        empleadoControlador.agregarUsuarioEmpleado(emp);
         
+    }
+    
+    
+    public Empleado verificarUsuarioEmpleado(String usuario, String password){
+        List<Empleado> listaUsuarios = empleadoControlador.obtenerTodosLosEmpleados();
+        
+        if(!listaUsuarios.isEmpty()){            
+            for(Empleado emp : listaUsuarios){
+                
+                if(emp.getUsuario().equals(usuario) && emp.getPassword().equals(password)){
+                    return emp;
+                }
+                
+            }            
+        }
+        
+        return null;
     }
     
 }
