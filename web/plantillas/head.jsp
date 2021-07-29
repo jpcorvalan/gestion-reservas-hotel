@@ -4,9 +4,8 @@
     Author     : Gold
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="es">
     <head>       
         
         <!-- Required meta tags -->
@@ -36,7 +35,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
         
         
-        <title>GestiÃ³n de reservas hoteleras</title>
+        <title>Gestión de reservas hoteleras</title>
     </head>
     
     <body>

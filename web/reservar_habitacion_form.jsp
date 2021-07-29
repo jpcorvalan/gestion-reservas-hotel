@@ -6,7 +6,6 @@
 
 <%@page import="Logica.TipoHabitacion"%>
 <%@page import="Logica.HabitacionControlador"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%@include file = "plantillas/head.jsp" %>
 <%@include file = "plantillas/navbar.jsp" %>
@@ -36,7 +35,7 @@
                     </label>
 
                     <label for="">
-                        <p class="indicador">Ingrese la habitaciÃ³n</p>
+                        <p class="indicador">Ingrese la habitación</p>
                         <select name="tematica" id="">
 
                             <% for(TipoHabitacion tematica : control.tematicas()){ %>
@@ -59,7 +58,7 @@
                     </label>                
 
                     <div class="boton">
-                        <input class="boton-verde" type="submit" value="Reservar habitaciÃ³n">
+                        <input class="boton-verde" type="submit" value="Reservar habitación">
                     </div>
                             
                 </form>

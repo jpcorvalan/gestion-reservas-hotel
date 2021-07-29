@@ -6,7 +6,6 @@
 
 <%@page import="Logica.HabitacionControlador"%>
 <%@page import="Logica.TipoHabitacion"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%@include file = "plantillas/head.jsp" %>
 <%@include file = "plantillas/navbar.jsp" %>
@@ -18,29 +17,29 @@
         
         <div class="container bloque-formulario-celeste animate__animated animate__backInUp">
             
-            <h2 class="titulos">Registrar nueva habitaci贸n</h2>
+            <h2 class="titulos">Registrar nueva habitaci髇</h2>
             
             <div class="formulario">
                 
                 <form action="SvtNuevaHabitacion" method="POST">
 
                     <label for="">
-                        <p class="indicador">Piso donde se encuentra la habitaci贸n</p>
+                        <p class="indicador">Piso donde se encuentra la habitaci髇</p>
                         <input name="piso" class="campos" type="number" placeholder="Ingrese el piso" autocomplete="off">
                     </label>
 
                     <label for="">
-                        <p class="indicador">N煤mero de la habitaci贸n</p>
-                        <input name="nro-habitacion" class="campos" type="number" placeholder="Ingrese el n煤mero de la habitaci贸n" autocomplete="off">
+                        <p class="indicador">N鷐ero de la habitaci髇</p>
+                        <input name="nro-habitacion" class="campos" type="number" placeholder="Ingrese el n鷐ero de la habitaci髇" autocomplete="off">
                     </label>
 
                     <label for="">
                         <p class="indicador">Costo</p>
-                        <input name="costo" class="campos" type="number" placeholder="Ingrese el costo de la habitaci贸n" autocomplete="off">
+                        <input name="costo" class="campos" type="number" placeholder="Ingrese el costo de la habitaci髇" autocomplete="off">
                     </label>      
 
                     <label for="">
-                        <p class="indicador">Seleccione la tem谩tica</p>
+                        <p class="indicador">Seleccione la tem醫ica</p>
                         <select name="tematica" id="">
                             <% for(TipoHabitacion tematica : control.tematicas()){ %>
 
@@ -51,7 +50,7 @@
                     </label>      
 
                     <div class="boton">
-                        <input class="boton-verde" type="submit" value="Registrar nueva habitaci贸n">
+                        <input class="boton-verde" type="submit" value="Registrar nueva habitaci髇">
                     </div>
                     
                 </form>

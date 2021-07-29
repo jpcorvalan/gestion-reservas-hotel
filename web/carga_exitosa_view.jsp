@@ -4,7 +4,6 @@
     Author     : Gold
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%@include file = "plantillas/head.jsp" %>
 <%@include file = "plantillas/navbar.jsp" %>

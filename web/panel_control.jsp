@@ -4,7 +4,6 @@
     Author     : Gold
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%@include file = "plantillas/head.jsp" %>
 <%@include file = "plantillas/navbar.jsp" %>
@@ -19,12 +18,12 @@
             
             <h2 class="titulos">Registrar datos</h2>
             
-            <a href="huesped_form.jsp" class="boton-rojo">Registrar huÃ©sped</a>
-            <a href="reservar_habitacion_form.jsp" class="boton-rojo">Reservar habitaciÃ³n</a>
-            <a href="tipo_habitacion_form.jsp" class="boton-rojo">Agregar temÃ¡tica de habitaciÃ³n nueva</a>
+            <a href="huesped_form.jsp" class="boton-rojo">Registrar huésped</a>
+            <a href="reservar_habitacion_form.jsp" class="boton-rojo">Reservar habitación</a>
+            <a href="tipo_habitacion_form.jsp" class="boton-rojo">Agregar temática de habitación nueva</a>
             
             <form action="SvtPrecargaTipoHabitaciones" method="POST" class="formulario-link">
-                <input type="submit" class="boton-rojo" value="Agregar habitaciÃ³n nueva">
+                <input type="submit" class="boton-rojo" value="Agregar habitación nueva">
             </form>
             
         </div>
@@ -33,7 +32,7 @@
             
             <h2 class="titulos">Consultar datos existentes</h2>
             
-            <a href="huesped_form.jsp" class="boton-verdev2">Ver todos los huÃ©spedes</a>
+            <a href="huesped_form.jsp" class="boton-verdev2">Ver todos los huéspedes</a>
             <a href="reservar_habitacion_form.jsp" class="boton-verdev2">Verificar todas las reservas</a>
             <a href="tipo_habitacion_form.jsp" class="boton-verdev2">Ver ganancias diarias</a>
             

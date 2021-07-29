@@ -28,4 +28,8 @@ public class CargoEmpleadoControlador {
         return control.obtenerTodosLosCargos();
     }
     
+    public CargoEmpleado obtenerCargoPorId(int idCargo){
+        return control.obtenerCargoPorId(idCargo);
+    }
+    
 }

@@ -4,7 +4,6 @@
     Author     : Gold
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%@include file = "plantillas/head.jsp" %>
 <%@include file = "plantillas/navbar.jsp" %>
@@ -14,7 +13,7 @@
         
         <div class="container bloque-formulario-morado animate__animated animate__backInUp">
             
-            <h2 class="titulos">Formulario para registrar un huÃ©sped</h2>
+            <h2 class="titulos">Formulario para registrar un huésped</h2>
             
             <div class="formulario">
                 
@@ -31,7 +30,7 @@
                     </label>
                     
                     <label for="">
-                        <p class="indicador">Ingrese nÃºmero de documento</p>
+                        <p class="indicador">Ingrese número de documento</p>
                         <input name="dni" class="campos" type="text" placeholder="Ingrese el DNI" autocomplete="off">
                     </label>
                     
@@ -41,17 +40,17 @@
                     </label>
                     
                     <label for="">
-                        <p class="indicador">Ingrese direcciÃ³n</p>
-                        <input name="direccion" class="campos" type="text" placeholder="Ingrese la direcciÃ³n" autocomplete="off">
+                        <p class="indicador">Ingrese dirección</p>
+                        <input name="direccion" class="campos" type="text" placeholder="Ingrese la dirección" autocomplete="off">
                     </label>
                     
                     <label for="">
-                        <p class="indicador">Ingrese profesiÃ³n del huÃ©sped</p>
+                        <p class="indicador">Ingrese profesión del huésped</p>
                         <input name="profesion" class="campos" type="text" placeholder="Ingrese la profesion" autocomplete="off">
                     </label>
                     
                     <div class="boton">
-                        <input class="boton-verde" type="submit" value="Registrar huÃ©sped">
+                        <input class="boton-verde" type="submit" value="Registrar huésped">
                     </div>
                     
                     

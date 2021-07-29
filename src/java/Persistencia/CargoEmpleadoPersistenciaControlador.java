@@ -24,4 +24,8 @@ public class CargoEmpleadoPersistenciaControlador {
         return cargoEmpJpa.findCargoEmpleadoEntities();
     }
     
+    public CargoEmpleado obtenerCargoPorId(int idCargo){
+        return cargoEmpJpa.findCargoEmpleado(idCargo);
+    }
+    
 }

@@ -4,7 +4,6 @@
     Author     : Gold
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%@include file = "plantillas/head.jsp" %>
 <%@include file = "plantillas/navbar.jsp" %>
@@ -27,8 +26,8 @@
                     </label>
                     
                     <label for="">
-                        <p class="indicador">Ingrese su contraseÃ±a</p>
-                        <input name="password" class="campos" type="password" placeholder="Ingrese una contraseÃ±a" autocomplete="off">
+                        <p class="indicador">Ingrese su contraseña</p>
+                        <input name="password" class="campos" type="password" placeholder="Ingrese una contraseña" autocomplete="off">
                     </label>
                     
                     <div class="boton">
@@ -36,7 +35,7 @@
                     </div>
                     
                     <div class="boton">
-                        <p class="indicador text-center">Si aÃºn no posee una cuenta, puede <a href="registro.jsp">REGISTRARSE</a></p>
+                        <p class="indicador text-center">Si aún no posee una cuenta, puede <a href="registro.jsp">REGISTRARSE</a></p>
                     </div>
                     
                     

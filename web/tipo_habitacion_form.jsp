@@ -4,7 +4,6 @@
     Author     : Gold
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%@include file = "plantillas/head.jsp" %>
 <%@include file = "plantillas/navbar.jsp" %>
@@ -14,15 +13,15 @@
         
         <div class="container bloque-formulario-celeste animate__animated animate__backInUp">
             
-            <h2 class="titulos">Registrar nueva temÃ¡tica de habitaciÃ³n</h2>
+            <h2 class="titulos">Registrar nueva temática de habitación</h2>
             
             <div class="formulario">
                 
                 <form action="SvtTipoHabitaciones" method="POST">
                 
                     <label for="">
-                        <p class="indicador">TemÃ¡tica de la habitaciÃ³n</p>
-                        <input name="tematica" class="campos" type="text" placeholder="Ingrese la temÃ¡tica" autocomplete="off">
+                        <p class="indicador">Temática de la habitación</p>
+                        <input name="tematica" class="campos" type="text" placeholder="Ingrese la temática" autocomplete="off">
                     </label>
 
                     <label for="">
@@ -31,12 +30,12 @@
                     </label>      
 
                     <label for="">
-                        <p class="indicador">Breve descripciÃ³n de la habitaciÃ³n</p>
-                        <textarea name="descripcion" id="" cols="30" rows="7" placeholder="Describa como es la temÃ¡tica nueva"></textarea>
+                        <p class="indicador">Breve descripción de la habitación</p>
+                        <textarea name="descripcion" id="" cols="30" rows="7" placeholder="Describa como es la temática nueva"></textarea>
                     </label>      
 
                     <div class="boton">
-                        <input class="boton-verde" type="submit" value="Registrar nueva temÃ¡tica">
+                        <input class="boton-verde" type="submit" value="Registrar nueva temática">
                     </div>
                     
                 </form>

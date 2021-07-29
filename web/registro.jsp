@@ -6,7 +6,6 @@
 
 <%@page import="Logica.CargoEmpleadoControlador"%>
 <%@page import="Logica.CargoEmpleado"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%@include file = "plantillas/head.jsp" %>
 <%@include file = "plantillas/navbar.jsp" %>
@@ -23,7 +22,7 @@
             
             <div class="formulario">
                 
-                <form method="post" action="">
+                <form method="post" action="SvtRegistroEmpleado">
                     
                     <label for="">
                         <p class="indicador">Ingrese un usuario</p>
@@ -31,8 +30,8 @@
                     </label>
                     
                     <label for="">
-                        <p class="indicador">Ingrese una contraseÃ±a</p>
-                        <input name="password" class="campos" type="password" placeholder="Ingrese una contraseÃ±a" autocomplete="off">
+                        <p class="indicador">Ingrese una contraseña</p>
+                        <input name="password" class="campos" type="password" placeholder="Ingrese una contraseña" autocomplete="off">
                     </label>
                     
                     <label for="">
@@ -46,7 +45,7 @@
                     </label>
                     
                     <label for="">
-                        <p class="indicador">Ingrese su nÃºmero de documento</p>
+                        <p class="indicador">Ingrese su número de documento</p>
                         <input name="dni" class="campos" type="text" placeholder="Ingrese su DNI" autocomplete="off">
                     </label>
                     
@@ -56,8 +55,8 @@
                     </label>
                     
                     <label for="">
-                        <p class="indicador">Ingrese su direcciÃ³n</p>
-                        <input name="direccion" class="campos" type="text" placeholder="Ingrese su direcciÃ³n" autocomplete="off">
+                        <p class="indicador">Ingrese su dirección</p>
+                        <input name="direccion" class="campos" type="text" placeholder="Ingrese su dirección" autocomplete="off">
                     </label>
                     
                     <label for="">
