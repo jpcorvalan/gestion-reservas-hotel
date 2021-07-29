@@ -6,6 +6,7 @@
 package Persistencia;
 
 import Logica.Huesped;
+import java.util.List;
 
 /**
  *
@@ -17,6 +18,10 @@ public class HuespedPersistenciaControlador {
     
     public void agregarHuesped(Huesped huesped){
         huespedJpa.create(huesped);
+    }
+    
+    public List<Huesped> obtenerTodosLosHuespedes(){
+        return huespedJpa.findHuespedEntities();
     }
     
 }

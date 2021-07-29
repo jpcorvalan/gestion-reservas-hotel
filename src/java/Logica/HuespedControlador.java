@@ -7,6 +7,7 @@ package Logica;
 
 import Persistencia.HuespedPersistenciaControlador;
 import java.util.Calendar;
+import java.util.List;
 
 /**
  *
@@ -27,6 +28,10 @@ public class HuespedControlador {
         huesped.setProfesion(profesion);
         
         control.agregarHuesped(huesped);
+    }
+    
+    public List<Huesped> obtenerTodosLosHuespedes(){
+        return control.obtenerTodosLosHuespedes();
     }
     
 }

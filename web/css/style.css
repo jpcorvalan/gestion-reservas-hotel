@@ -197,11 +197,55 @@ input{
     
     background: rgb(72,4,3);
     background: linear-gradient(315deg, rgba(72,4,3,1) 0%, rgba(194,0,0,1) 100%);
+    
     border: solid 1px whitesmoke;
     border-radius: 7px;
 
     margin: 0;
     padding: 5px;    
+}
+
+.grid-3-columnas{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    
+    margin-bottom: 3rem;
+    
+    border-radius: 1rem;    
+}
+
+.grid-3-columnas div{
+    background: #757575;
+    background: linear-gradient(180deg, #a1a1a1 0%, #ffffff 100%);
+    
+    max-height: 100px;
+    
+    overflow: auto;
+    
+    border: 1px solid black;   
+    
+}
+
+.grid-indicador{
+    font-family: var(--fuente);
+    color: whitesmoke;
+    padding: 0;
+    /*margin: 0 0 2px 2px;*/
+    
+    text-align: center;
+    
+    background: rgb(72,4,3);
+    background: linear-gradient(0deg, rgba(72,4,3,1) 0%, rgba(194,0,0,1) 100%);
+}
+
+.grid-dato{
+    font-family: var(--fuente);
+    color: black;    
+    text-align: center;    
+}
+
+.grid-indicador-1024{
+    display: none;
 }
 
 
@@ -465,6 +509,41 @@ input{
     width: 65%;
     
     transition: 0.25s;
+}
+
+.grid-3-columnas{    
+    grid-template-columns: repeat(6, 1fr);
+    
+    margin: 0 5rem;
+}
+
+.grid-indicador{
+    display: none;
+}
+
+.grid-indicador-1024{
+    display: block;
+    
+    font-family: var(--fuente);
+    color: whitesmoke;
+    padding: 0;
+    margin: 0;
+    
+    text-align: center;
+    
+    border: 1px solid black;
+    
+    background: rgb(72,4,3);
+    background: linear-gradient(0deg, rgba(72,4,3,1) 0%, rgba(194,0,0,1) 100%);
+}
+
+.grid-3-columnas div{
+    max-height: 70px;
+}
+
+.grid-dato{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 
