@@ -7,14 +7,19 @@ package Logica;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
+import org.threeten.extra.Interval;
 
 /**
  *
  * @author Gold
  */
 public class ManejadorDeFechas {
+    
+    ReservaControlador reservaControlador = new ReservaControlador();
     
     public static Calendar conversorACalendar(String fecha) throws ParseException{
         
@@ -35,6 +40,32 @@ public class ManejadorDeFechas {
         /*----- Obtención y conversión de la fecha, de String a Date, y de Date a Calendar - FIN -----*/
         
         return fechaNacimiento;
+    }
+    
+    
+    
+    public boolean conflictoConFechasReservadas(Calendar checkIn, Calendar checkOut){
+        
+        List<Reserva> reservas = reservaControlador.obtenerTodasLasReservas();
+        
+        Instant nuevaReservaFechaDesde = checkIn.toInstant();
+        Instant nuevaReservaFechaHasta = checkOut.toInstant();
+        
+        Interval intervaloNuevaReserva = Interval.of(nuevaReservaFechaDesde, nuevaReservaFechaHasta);
+        
+        if(!reservas.isEmpty()){
+            for(Reserva res : reservas){
+                Instant reservaGuardadaFechaDesde = res.getCheckIn().toInstant();
+                Instant reservaGuardadaFechaHasta = res.getCheckOut().toInstant();
+
+                Interval intervaloReservaGuardada = Interval.of(nuevaReservaFechaDesde, nuevaReservaFechaHasta);
+
+                // Overlaps da TRUE si las fechas se solapan, FALSE caso contrario, es decir, si da FALSE, SE PUEDE RESERVAR
+                return intervaloNuevaReserva.overlaps(intervaloReservaGuardada);
+            }
+        }
+        
+        return false;
     }
     
 }

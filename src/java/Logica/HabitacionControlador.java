@@ -50,6 +50,10 @@ public class HabitacionControlador {
         control.agregarNuevaHabitacion(habitacion);
     }
     
+    public List<Habitacion> obtenerTodasLasHabitaciones(){
+        return control.obtenerTodasLasHabitaciones();
+    }
+    
     
     
 }

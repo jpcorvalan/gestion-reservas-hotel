@@ -4,6 +4,9 @@
     Author     : Gold
 --%>
 
+<%@page import="Logica.Huesped"%>
+<%@page import="Logica.HuespedControlador"%>
+<%@page import="Logica.Habitacion"%>
 <%@include file = "plantillas/head.jsp" %>
 <%@include file = "plantillas/navbar.jsp" %>
 
@@ -16,7 +19,10 @@
 <%@page import="Logica.TipoHabitacion"%>
 <%@page import="Logica.HabitacionControlador"%>
 
-<% HabitacionControlador control = new HabitacionControlador(); %>
+<% 
+    HabitacionControlador habitacionControlador = new HabitacionControlador();
+    HuespedControlador huespedControlador = new HuespedControlador();
+%>
 
 <main>
     
@@ -28,7 +34,7 @@
             
             <div class="formulario">
                 
-                <form action="SvtNuevaHabitacion" method="POST">
+                <form action="SvtReserva" method="POST">
                 
                     <label for="">
                         <p class="indicador">Ingrese fecha de Check-In</p>
@@ -44,9 +50,9 @@
                         <p class="indicador">Ingrese la habitación</p>
                         <select name="tematica" id="">
 
-                            <% for(TipoHabitacion tematica : control.tematicas()){ %>
+                            <% for(Habitacion habitacion : habitacionControlador.obtenerTodasLasHabitaciones()){ %>
 
-                                <option value="<%= tematica.getId() %>"><%= tematica.getNombreHabitacion() %></option>
+                                <option value="<%= habitacion.getNroHabitacion() %>"> <%=habitacion.getNroHabitacion()%> - <%=habitacion.getTematica().getNombreHabitacion() %></option>
 
                             <% } %>
 
@@ -55,7 +61,16 @@
 
                     <label for="">
                         <p class="indicador">Ingrese el huesped a cargo</p>
-                        <input name="huesped" class="campos" type="text" placeholder="" autocomplete="off">
+                        <select name="huesped" id="">
+                            
+                            <% 
+                                for(Huesped huesped : huespedControlador.obtenerTodosLosHuespedes()) { 
+                                    String nombreDni = huesped.getNombre() + " " + huesped.getApellido() + " - " + huesped.getDni();
+                            %>      
+                                    <option value="<%= huesped.getId() %>"> <%= nombreDni %> </option>
+                            <% } %>
+                            
+                        </select>
                     </label>
 
                     <label for="">

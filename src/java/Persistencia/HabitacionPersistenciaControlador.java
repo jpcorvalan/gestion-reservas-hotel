@@ -45,8 +45,11 @@ public class HabitacionPersistenciaControlador {
             habitacionJpa.create(habitacion);
         } catch (Exception ex) {
             Logger.getLogger(HabitacionPersistenciaControlador.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
+        }        
+    }
+    
+    public List<Habitacion> obtenerTodasLasHabitaciones(){
+        return habitacionJpa.findHabitacionEntities();
     }
     
 }
