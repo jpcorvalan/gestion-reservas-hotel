@@ -24,7 +24,7 @@
 
 <main>
     
-    <section class="animate__animated animate__backInRight">
+    <section class="animate__animated">
         
         <h2 class="titulos">Todos los huéspedes</h2>
         
@@ -70,6 +70,10 @@
                 <div>
                     <p class="grid-indicador">Profesión</p>
                     <p class="grid-dato"><%= huesped.getProfesion()%></p>
+                </div>
+
+                <div class="grid-boton-modificar">
+                    <a class="" href="#">Modificar</a>
                 </div>
             
             </div>
