@@ -4,6 +4,7 @@
     Author     : Gold
 --%>
 
+<%@page import="java.time.Instant"%>
 <%@page import="java.util.GregorianCalendar"%>
 <%@page import="java.util.Calendar"%>
 <%@page import="Logica.Huesped"%>
@@ -77,6 +78,10 @@
                 </div>
             
             </div>
+                
+                <p class="text-danger"><%= huesped.getFechaNacimiento() %></p>
+                <% Instant aInstant= huesped.getFechaNacimiento().toInstant(); %>
+                <p class="text-warning"><%=aInstant %></p>
         
         <% } %>
         

@@ -38,7 +38,7 @@
             <h2 class="titulos">Consultar datos existentes</h2>
             
             <a href="ver_todos_huespedes.jsp" class="boton-verdev2">Ver todos los huéspedes</a>
-            <a href="reservar_habitacion_form.jsp" class="boton-verdev2">Verificar todas las reservas</a>
+            <a href="ver_todas_reservas.jsp" class="boton-verdev2">Verificar todas las reservas</a>
             <a href="tipo_habitacion_form.jsp" class="boton-verdev2">Ver ganancias diarias</a>
             
             <form action="SvtPrecargaTipoHabitaciones" method="POST" class="formulario-link">

@@ -24,4 +24,8 @@ public class HuespedPersistenciaControlador {
         return huespedJpa.findHuespedEntities();
     }
     
+    public Huesped obtenerHuespedPorId(int idHuesped){
+        return huespedJpa.findHuesped(idHuesped);
+    }
+    
 }

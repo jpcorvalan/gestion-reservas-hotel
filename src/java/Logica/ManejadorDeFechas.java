@@ -44,25 +44,44 @@ public class ManejadorDeFechas {
     
     
     
-    public boolean conflictoConFechasReservadas(Calendar checkIn, Calendar checkOut){
+    public boolean conflictoConFechasReservadas(Calendar checkIn, Calendar checkOut, int nroHabitacion){
         
+        // Obtenemos todas las reservas que se hayan hecho hasta el momento
         List<Reserva> reservas = reservaControlador.obtenerTodasLasReservas();
         
+        
+        // Convertimos las fechas de la nueva reserva a Instant para poder crear nuestro Intervalo de tiempo con Interval 
+        // (los intervalos con esta clase solo pueden armarse con 2 objetos de tipo Instant)
         Instant nuevaReservaFechaDesde = checkIn.toInstant();
         Instant nuevaReservaFechaHasta = checkOut.toInstant();
         
+        
+        // Creamos nuestro Interval con las 2 fechas ya convertidas a Instant
         Interval intervaloNuevaReserva = Interval.of(nuevaReservaFechaDesde, nuevaReservaFechaHasta);
         
+        
+        // Comprobamos primero que nuestro arreglo de reservas no esté vacío, caso contrario, la nueva reserva se realiza automáticamente.
         if(!reservas.isEmpty()){
+            
+            // Si existen reservas, recorremos el arreglo
             for(Reserva res : reservas){
-                Instant reservaGuardadaFechaDesde = res.getCheckIn().toInstant();
-                Instant reservaGuardadaFechaHasta = res.getCheckOut().toInstant();
+                
+                // Se hace la comparación de fechas solo si la habitación requerida ya está ocupada en alguna otra reserva.
+                if(res.getHabitacion().getNroHabitacion() == nroHabitacion){
+                    
+                    // Caso de que la habitación pedida ya esté reservada, se comprueba si las fechas de Check-In/Out de ambas no interseccionan.
+                    Instant reservaGuardadaFechaDesde = res.getCheckIn().toInstant();
+                    Instant reservaGuardadaFechaHasta = res.getCheckOut().toInstant();
 
-                Interval intervaloReservaGuardada = Interval.of(nuevaReservaFechaDesde, nuevaReservaFechaHasta);
+                    Interval intervaloReservaGuardada = Interval.of(reservaGuardadaFechaDesde, reservaGuardadaFechaHasta);
+                    
 
-                // Overlaps da TRUE si las fechas se solapan, FALSE caso contrario, es decir, si da FALSE, SE PUEDE RESERVAR
-                return intervaloNuevaReserva.overlaps(intervaloReservaGuardada);
+                    // Overlaps da TRUE si las fechas se solapan, FALSE caso contrario, es decir, si da FALSE, SE PUEDE RESERVAR
+                    return intervaloNuevaReserva.overlaps(intervaloReservaGuardada);
+                }
+                
             }
+            
         }
         
         return false;

@@ -34,4 +34,8 @@ public class HuespedControlador {
         return control.obtenerTodosLosHuespedes();
     }
     
+    public Huesped obtenerHuespedPorId(int idHuesped){
+        return control.obtenerHuespedPorId(idHuesped);
+    }
+    
 }

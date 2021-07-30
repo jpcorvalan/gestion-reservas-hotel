@@ -51,4 +51,9 @@ public class EmpleadoControlador {
         return null;
     }
     
+    
+    public Empleado obtenerEmpleadoPorId(int idEmpleado){
+        return empleadoControlador.obtenerEmpleadoPorId(idEmpleado);
+    }
+    
 }

@@ -25,4 +25,9 @@ public class EmpleadoPersistenciaControlador {
         return empleadoJpa.findEmpleadoEntities();
     }
     
+    
+    public Empleado obtenerEmpleadoPorId(int idEmpleado){
+        return empleadoJpa.findEmpleado(idEmpleado);
+    }
+    
 }

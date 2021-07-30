@@ -30,7 +30,7 @@ public class HabitacionPersistenciaControlador {
         return tipoHabJpa.findTipoHabitacionEntities();
     }    
     
-    public TipoHabitacion obtenerHabitacionPorId(int id){
+    public TipoHabitacion obtenerTematicaHabitacionPorId(int id){
         return tipoHabJpa.findTipoHabitacion(id);
     }
     
@@ -50,6 +50,10 @@ public class HabitacionPersistenciaControlador {
     
     public List<Habitacion> obtenerTodasLasHabitaciones(){
         return habitacionJpa.findHabitacionEntities();
+    }
+    
+    public Habitacion obtenerNumeroHabitacion(int nroHabitacion){
+        return habitacionJpa.findHabitacion(nroHabitacion);
     }
     
 }

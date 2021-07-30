@@ -48,7 +48,7 @@
 
                     <label for="">
                         <p class="indicador">Ingrese la habitación</p>
-                        <select name="tematica" id="">
+                        <select name="habitacion" id="">
 
                             <% for(Habitacion habitacion : habitacionControlador.obtenerTodasLasHabitaciones()){ %>
 

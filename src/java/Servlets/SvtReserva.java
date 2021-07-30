@@ -5,10 +5,14 @@
  */
 package Servlets;
 
-import Logica.Empleado;
-import Logica.EmpleadoControlador;
+import Logica.ManejadorDeFechas;
+import Logica.ReservaControlador;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.util.Calendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,8 +24,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author Gold
  */
-@WebServlet(name = "SvtLoginEmpleado", urlPatterns = {"/SvtLoginEmpleado"})
-public class SvtLoginEmpleado extends HttpServlet {
+@WebServlet(name = "SvtReserva", urlPatterns = {"/SvtReserva"})
+public class SvtReserva extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,10 +44,10 @@ public class SvtLoginEmpleado extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet SvtLoginEmpleado</title>");            
+            out.println("<title>Servlet SvtReserva</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet SvtLoginEmpleado at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet SvtReserva at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -76,32 +80,46 @@ public class SvtLoginEmpleado extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String usuario = request.getParameter("usuario");
-        String password = request.getParameter("password");
-        
-        EmpleadoControlador empleadoControlador = new EmpleadoControlador();
-        
-        // Verifico que el usuario y la clave brindada estén en la base de datos y devuelve un Empleado si existe
-        Empleado empleado = empleadoControlador.verificarUsuarioEmpleado(usuario, password);
-        
-        // Si el usuario y la clave son válidas, se crea la sesión con los datos del Empleado
-        if(empleado != null){
+        try {          
+            
+            // Obtenemos la sesión para verificar qué Empleado realizó la reserva
             HttpSession sesion = request.getSession(true);
             
-            sesion.setAttribute("usuario", usuario);
-            sesion.setAttribute("password", password);
-            sesion.setAttribute("nombre", empleado.getNombre());
-            sesion.setAttribute("id", empleado.getId());
-            sesion.setAttribute("loginError", null);
             
-            response.sendRedirect("panel_control.jsp");
-        }else{
-            HttpSession sesion = request.getSession(true);
+            // Se guardan los datos del formulario en variables
+            String checkInString = request.getParameter("checkin");
+            String checkOutString = request.getParameter("checkout");
+            int idHabitacion = Integer.parseInt(request.getParameter("habitacion"));
+            int idHuesped = Integer.parseInt(request.getParameter("huesped"));
+            int cantPersonas = Integer.parseInt(request.getParameter("cantidad-personas"));
+            int idEmpleadoAlta = (int) sesion.getAttribute("id");
             
-            sesion.setAttribute("loginError", "El usuario o contraseña son inválidos");
             
-            response.sendRedirect("login.jsp");
+            // Se convierten las fechas a Calendar
+            Calendar checkIn = ManejadorDeFechas.conversorACalendar(checkInString);
+            Calendar checkOut = ManejadorDeFechas.conversorACalendar(checkOutString);
+            
+            
+            // Instanciamos nuestra clase ManejadorDeFechas para utilizar el método "conflictoConFechasReservadas"
+            ManejadorDeFechas comprobador = new ManejadorDeFechas();
+            
+            
+            // Si la comprobación da FALSE, significa que no hay conflicto entre fechas y puede realizarse la reserva
+            if(!comprobador.conflictoConFechasReservadas(checkIn, checkOut, idHabitacion)){                
+                ReservaControlador reservaControlador = new ReservaControlador();
+                
+                reservaControlador.agregarReserva(checkIn, checkOut, idHabitacion, idHuesped, cantPersonas, idEmpleadoAlta);
+                
+                response.sendRedirect("carga_exitosa_view.jsp");
+            }else{
+                response.sendRedirect("panel_control.jsp");
+            }
+            
+            
+        } catch (ParseException ex) {
+            Logger.getLogger(SvtReserva.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
         
     }
 

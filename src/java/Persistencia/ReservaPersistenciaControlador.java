@@ -15,6 +15,10 @@ import java.util.List;
 public class ReservaPersistenciaControlador {
     
     ReservaJpaController reservaJpa = new ReservaJpaController();
+    
+    public void agregarReserva(Reserva reserva){
+        reservaJpa.create(reserva);
+    }
      
     public List<Reserva> obtenerTodasLasReservas(){
         return reservaJpa.findReservaEntities();

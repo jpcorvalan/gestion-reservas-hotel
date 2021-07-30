@@ -30,8 +30,8 @@ public class HabitacionControlador {
         return control.obtenerTematicas();
     }
     
-    public TipoHabitacion obtenerHabitacionPorId(int id){
-        return control.obtenerHabitacionPorId(id);
+    public TipoHabitacion obtenerTematicaHabitacionPorId(int id){
+        return control.obtenerTematicaHabitacionPorId(id);
     }
     
     
@@ -45,13 +45,17 @@ public class HabitacionControlador {
         habitacion.setNroHabitacion(numHab);
         habitacion.setPiso(piso);
         habitacion.setPrecio(costo);
-        habitacion.setTematica(this.obtenerHabitacionPorId(tematica));
+        habitacion.setTematica(this.obtenerTematicaHabitacionPorId(tematica));
         
         control.agregarNuevaHabitacion(habitacion);
     }
     
     public List<Habitacion> obtenerTodasLasHabitaciones(){
         return control.obtenerTodasLasHabitaciones();
+    }
+    
+    public Habitacion obtenerNumeroHabitacion(int nroHabitacion){
+        return control.obtenerNumeroHabitacion(nroHabitacion);
     }
     
     

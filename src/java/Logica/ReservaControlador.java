@@ -6,7 +6,9 @@
 package Logica;
 
 import Persistencia.ReservaPersistenciaControlador;
+import java.util.Calendar;
 import java.util.List;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -15,6 +17,23 @@ import java.util.List;
 public class ReservaControlador {
     
     ReservaPersistenciaControlador reservaControlador = new ReservaPersistenciaControlador();
+    HabitacionControlador habitacionControlador = new HabitacionControlador();
+    HuespedControlador huespedControlador = new HuespedControlador();
+    EmpleadoControlador empleadoControlador = new EmpleadoControlador();
+    
+    public void agregarReserva(Calendar checkIn, Calendar checkOut, int idHabitacion, int idHuesped, int cantPersonas, int idEmpleadoAlta){
+        Reserva nuevaReserva = new Reserva();
+        
+        nuevaReserva.setCheckIn(checkIn);
+        nuevaReserva.setCheckOut(checkOut);
+        nuevaReserva.setHabitacion(habitacionControlador.obtenerNumeroHabitacion(idHabitacion));
+        nuevaReserva.setHuesped(huespedControlador.obtenerHuespedPorId(idHuesped));
+        nuevaReserva.setCantPersonas(cantPersonas);
+        nuevaReserva.setUsuarioAlta(empleadoControlador.obtenerEmpleadoPorId(idEmpleadoAlta));
+        nuevaReserva.setEstaActiva(true);
+        
+        reservaControlador.agregarReserva(nuevaReserva);
+    }
     
     public List<Reserva> obtenerTodasLasReservas(){
         return reservaControlador.obtenerTodasLasReservas();
