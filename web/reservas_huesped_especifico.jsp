@@ -24,11 +24,13 @@
     
     <section>
         
-        <h2 class="titulos">Todas las reservas de <%= reservasHuesped.get(0).getHuesped().getNombre() + " " + reservasHuesped.get(0).getHuesped().getApellido() %></h2>
+        
         
     <%  if(reservasHuesped != null){           %>
     <%      if(!reservasHuesped.isEmpty()){    %>
         
+                <h2 class="titulos">Todas las reservas de <%= reservasHuesped.get(0).getHuesped().getNombre() + " " + reservasHuesped.get(0).getHuesped().getApellido() %></h2>
+    
                 <div class="grid-3-columnas">
                     <p class="grid-indicador-1024">Id reserva</p>
                     <p class="grid-indicador-1024">Check-In</p>
