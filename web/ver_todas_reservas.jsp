@@ -41,7 +41,9 @@
             <p class="grid-indicador-1024">Habitación</p>
             <p class="grid-indicador-1024">Huesped a cargo</p>
             <p class="grid-indicador-1024">Personas</p>
-            <p class="grid-indicador-1024">Profesion</p>        
+            <p class="grid-indicador-1024">Profesion</p>      
+            <p class="grid-indicador-1024">Editar</p>
+            <p class="grid-indicador-1024">Detalles</p>
         </div>    
         
         
@@ -79,14 +81,14 @@
                     <p class="grid-dato"><%= res.getHuesped().getProfesion() %></p>
                 </div>
 
-                <form method="post" action="SvtModificar">
+                <form method="post" action="SvtModificarReserva">
                     <div class="grid-boton-modificar">
                         <input type="hidden" name="id" value="<%= res.getId() %>">
                         <button type="submit" class="modificar">Editar</button>
                     </div>
                 </form>
 
-                <form method="post" action="SvtDetalles">
+                <form method="post" action="SvtDetallesReserva">
                     <div class="grid-boton-modificar">
                         <input type="hidden" name="id" value="<%= res.getId() %>">
                         <button type="submit" class="detalles">Detalles</button>

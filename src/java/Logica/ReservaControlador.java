@@ -43,4 +43,8 @@ public class ReservaControlador {
         return reservaControlador.obtenerReservaPorId(id);
     }
     
+    public List<Reserva> obtenerReservasDeHuespedEspecifico(int idHuesped){
+        return reservaControlador.obtenerReservasDeHuespedEspecifico(idHuesped);
+    }
+    
 }

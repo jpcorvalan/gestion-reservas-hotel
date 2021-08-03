@@ -606,9 +606,10 @@ input{
 }
 
 .grid-3-columnas{    
-    grid-template-columns: repeat(8, 1fr);
+    grid-template-columns: repeat(auto-fit, 110px);
+    justify-content: center;
     
-    margin: 0 8rem;
+    margin: 0;
 }
 
 .grid-3-columnas div{

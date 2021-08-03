@@ -21,8 +21,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author Gold
  */
-@WebServlet(name = "SvtDetalles", urlPatterns = {"/SvtDetalles"})
-public class SvtDetalles extends HttpServlet {
+@WebServlet(name = "SvtDetallesReserva", urlPatterns = {"/SvtDetalles"})
+public class SvtDetallesReserva extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>

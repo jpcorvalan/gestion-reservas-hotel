@@ -96,15 +96,28 @@ public class ManejadorDeFechas {
     
     
     public int diasReservados(Calendar pCheckIn, Calendar pCheckOut){
-        int dias=0;
-        Calendar checkInNuevo = pCheckIn;
         
-        while(checkInNuevo.compareTo(pCheckOut) <= 0){
+        // Declaramos la variable donde se va a guardar la cantidad de días
+        int dias=0;
+        
+        
+        // Iteramos hasta que el CheckIn sobrepase la fecha del CheckOut
+        while(pCheckIn.compareTo(pCheckOut) <= 0){
+            
+            // Mientras siga iterando, la variable aumentará su valor en 1.
             dias+=1;
             
-            checkInNuevo.add(Calendar.DAY_OF_MONTH, 1);
+            // Agregamos 1 día más a la fecha del CheckIn, condición que terminará el bucle en su momento.
+            pCheckIn.add(Calendar.DAY_OF_MONTH, 1);
         }
         
+        
+        // La función "add" funciona como un "set", es decir que su valor cambiará globalmente dentro del bucle, por esa razón
+        // volvemos a restarle los días que se sumaron en la fecha.
+        pCheckIn.add(Calendar.DAY_OF_MONTH, - dias);
+        
+        
+        // Retornamos los días, procedentes del cálculo.
         return dias;
     }
     

@@ -31,25 +31,26 @@
         %>
         
         <div class="grid-3-columnas">
-            <p class="grid-indicador-1024">Días de reserva</p>
+            <p class="grid-indicador-1024">Id de reserva</p>
+            <p class="grid-indicador-1024">Reserva por</p>
             <p class="grid-indicador-1024">Costo</p>
         </div>
         
         <div class="grid-3-columnas">            
             
             <div>
-                <p class="grid-indicador">Días de reserva</p>
-                <p class="grid-dato"><%= diasReserva %></p>
+                <p class="grid-indicador">Id de reserva</p>
+                <p class="grid-dato"><%= reserva.getId() %></p>
+            </div>
+            
+            <div>
+                <p class="grid-indicador">Reserva por</p>
+                <p class="grid-dato"><%= diasReserva %> días</p>
             </div>
             
             <div>
                 <p class="grid-indicador">Costo de la estadía</p>
-                <p class="grid-dato"><%= diasReserva*reserva.getHabitacion().getPrecio() %></p>
-            </div>
-            
-            <div>
-                <p class="grid-indicador">Id de reserva</p>
-                <p class="grid-dato"><%= reserva.getId() %></p>
+                <p class="grid-dato">$<%= diasReserva*reserva.getHabitacion().getPrecio() %></p>
             </div>
             
         </div>

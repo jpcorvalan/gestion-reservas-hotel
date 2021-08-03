@@ -31,11 +31,13 @@
         
         <div class="grid-3-columnas">
             <p class="grid-indicador-1024">Nombre</p>
-            <p class="grid-indicador-1024">Apellido</p>
+            <p class="grid-indicador-1024">Apellido</p>            
             <p class="grid-indicador-1024">DNI</p>
             <p class="grid-indicador-1024">Dirección</p>
             <p class="grid-indicador-1024">Edad</p>
-            <p class="grid-indicador-1024">Profesion</p>        
+            <p class="grid-indicador-1024">Profesion</p>       
+            <p class="grid-indicador-1024"> </p>
+            <p class="grid-indicador-1024"> </p>
         </div>    
         
         
@@ -53,6 +55,7 @@
                     <p class="grid-dato"><%= huesped.getApellido() %></p>
                 </div>
 
+
                 <div>
                     <p class="grid-indicador">DNI</p>
                     <p class="grid-dato"><%= huesped.getDni() %></p>
@@ -63,25 +66,34 @@
                     <p class="grid-dato"><%= huesped.getDireccion() %></p>
                 </div>
 
+
                 <div>
                     <p class="grid-indicador">Edad</p>
                     <p class="grid-dato"><%= fechaHoy.get(Calendar.YEAR) - huesped.getFechaNacimiento().get(Calendar.YEAR) %></p>
                 </div>
 
+                  
                 <div>
                     <p class="grid-indicador">Profesión</p>
                     <p class="grid-dato"><%= huesped.getProfesion()%></p>
                 </div>
 
-                <div class="grid-boton-modificar">
-                    <a class="" href="#">Modificar</a>
-                </div>
+
+                <form action="SvtModificarHuespedEspecifico" method="post">
+                    <div class="grid-boton-modificar">
+                        <input name="id" type="hidden" value="<%= huesped.getId() %>">
+                        <button type="submit" class="modificar">Modificar</button>
+                    </div>
+                </form>
+                
+                <form action="SvtReservasHuespedEspecifico" method="post">
+                    <div class="grid-boton-modificar">
+                        <input name="id" type="hidden" value="<%= huesped.getId() %>">
+                        <button type="submit" class="detalles">Reservas</button>
+                    </div>
+                </form>
             
             </div>
-                
-                <p class="text-danger"><%= huesped.getFechaNacimiento() %></p>
-                <% Instant aInstant= huesped.getFechaNacimiento().toInstant(); %>
-                <p class="text-warning"><%=aInstant %></p>
         
         <% } %>
         

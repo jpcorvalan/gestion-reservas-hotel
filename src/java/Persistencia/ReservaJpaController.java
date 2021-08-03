@@ -140,4 +140,13 @@ public class ReservaJpaController implements Serializable {
         }
     }
     
+    public List<Reserva> findReservaByIdHuesped(int idHuesped){
+        EntityManager em = getEntityManager();
+        
+        Query nativeQuery = em.createNativeQuery("SELECT * FROM reservas WHERE HUESPED_id = ?", Reserva.class);
+        nativeQuery.setParameter(1, idHuesped);
+        
+        return nativeQuery.getResultList();
+    }
+    
 }

@@ -28,4 +28,8 @@ public class ReservaPersistenciaControlador {
         return reservaJpa.findReserva(id);
     }
     
+    public List<Reserva> obtenerReservasDeHuespedEspecifico(int idHuesped){
+        return reservaJpa.findReservaByIdHuesped(idHuesped);
+    }
+    
 }
