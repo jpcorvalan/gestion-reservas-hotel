@@ -8,11 +8,13 @@ package Servlets;
 import Logica.Empleado;
 import Logica.EmpleadoControlador;
 import Logica.ManejadorDeFechas;
+import Logica.Reserva;
 import Logica.ReservaControlador;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
 import java.util.Calendar;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -67,7 +69,32 @@ public class SvtReserva extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
+        HttpSession sesion = request.getSession();
+        
+        try {
+            
+            String fechaPedidaString = request.getParameter("fecha-pedida");             
+            
+            if(fechaPedidaString != null){
+                Calendar fechaPedida = ManejadorDeFechas.conversorACalendar(fechaPedidaString);
+
+                ManejadorDeFechas manejadorFechas = new ManejadorDeFechas();
+
+                List<Reserva> reservasDeFechaEspecifica = manejadorFechas.reservasEnDiaEspecifico(fechaPedida);
+
+                sesion.setAttribute("reservasDiaEspecifico", reservasDeFechaEspecifica);
+
+                response.sendRedirect("reservas_dia_especifico.jsp");
+            }
+            
+        } catch (ParseException ex) {
+            Logger.getLogger(SvtReserva.class.getName()).log(Level.SEVERE, null, ex);
+            sesion.setAttribute("fechaVaciaError", "Introduzca una fecha válida para la búsqueda");
+            response.sendRedirect("reservas_dia_especifico.jsp");
+        }
+        
+        
     }
 
     /**

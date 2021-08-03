@@ -7,12 +7,16 @@ package Logica;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.time.Instant;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.threeten.extra.Interval;
 
 /**
@@ -102,6 +106,62 @@ public class ManejadorDeFechas {
         }
         
         return dias;
+    }
+    
+    
+    
+    public List<Reserva> reservasEnDiaEspecifico(Calendar fechaPedida){
+        
+        // Obtenemos una lista con todas las reservas que se hicieron hasta el momento
+        List<Reserva> todasLasReservas = reservaControlador.obtenerTodasLasReservas();
+        
+        
+        // Creamos un HashMap para mantener los intervalos de las reservas, con sus respectivas reservas
+        HashMap<Reserva, Interval> reservaConIntervalo = new HashMap<>();
+        
+        
+        // Creamos un ArrayList vacío que luego contendrá las reservas que coinciden con la fecha llegada por parámetro
+        List<Reserva> reservasCoincidentes = new ArrayList<>();
+        
+        
+        // Si existen reservas, entonces...
+        if(todasLasReservas != null){
+            
+            
+            // Iteramos sobre todas las reservas
+            for(Reserva res : todasLasReservas){                
+                
+                // Creamos intervalos con las fechas de CheckIn/Out de todas las reservas
+                Instant checkIn = res.getCheckIn().toInstant();
+                Instant checkOut = res.getCheckOut().toInstant();
+
+                Interval intervalo = Interval.of(checkIn, checkOut);
+
+                
+                // Agregamos la reserva (clave) con su respectivo intervalo de tiempo (valor) al HashMap.
+                reservaConIntervalo.put(res, intervalo);
+            }
+
+            
+            // Procedemos a "recorrer" el HashMap
+            for(Map.Entry<Reserva, Interval> campo : reservaConIntervalo.entrySet()){                
+                
+                // Si en los Intervalos (valor), se encuentra la fecha pedida por parámetro.
+                if(campo.getValue().contains(fechaPedida.toInstant())){                    
+                    
+                    // Agregamos la reserva (clave) al arreglo de reservas coincidentes.
+                    reservasCoincidentes.add(campo.getKey());
+                }
+            }                    
+            
+            // Retornamos el ArrayList al que acabamos de agregarle datos.
+            return reservasCoincidentes;
+        }
+        
+        
+        // Devolverá null si existe ninguna reserva hecha hasta el momento.
+        return null;
+        
     }
     
 }
