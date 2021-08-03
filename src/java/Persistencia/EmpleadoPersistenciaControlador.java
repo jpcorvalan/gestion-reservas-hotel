@@ -7,6 +7,8 @@ package Persistencia;
 
 import Logica.Empleado;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -28,6 +30,15 @@ public class EmpleadoPersistenciaControlador {
     
     public Empleado obtenerEmpleadoPorId(int idEmpleado){
         return empleadoJpa.findEmpleado(idEmpleado);
+    }
+    
+    
+    public void incrementarReservasHechas(Empleado empleado){
+        try {
+            empleadoJpa.edit(empleado);
+        } catch (Exception ex) {
+            Logger.getLogger(EmpleadoPersistenciaControlador.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 }

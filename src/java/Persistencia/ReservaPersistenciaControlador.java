@@ -24,4 +24,8 @@ public class ReservaPersistenciaControlador {
         return reservaJpa.findReservaEntities();
     }
     
+    public Reserva obtenerReservaPorId(int id){
+        return reservaJpa.findReserva(id);
+    }
+    
 }

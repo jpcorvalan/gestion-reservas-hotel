@@ -8,8 +8,10 @@ package Logica;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
+import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import org.threeten.extra.Interval;
 
@@ -85,6 +87,21 @@ public class ManejadorDeFechas {
         }
         
         return false;
+    }
+    
+    
+    
+    public int diasReservados(Calendar pCheckIn, Calendar pCheckOut){
+        int dias=0;
+        Calendar checkInNuevo = pCheckIn;
+        
+        while(checkInNuevo.compareTo(pCheckOut) <= 0){
+            dias+=1;
+            
+            checkInNuevo.add(Calendar.DAY_OF_MONTH, 1);
+        }
+        
+        return dias;
     }
     
 }

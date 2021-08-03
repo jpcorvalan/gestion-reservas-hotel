@@ -22,6 +22,9 @@
 <% 
     HabitacionControlador habitacionControlador = new HabitacionControlador();
     HuespedControlador huespedControlador = new HuespedControlador();
+    
+    String checkInAntesError = (String) sesion.getAttribute("checkInAntesError");
+    String habitacionOcupada = (String) sesion.getAttribute("habitacionOcupada");
 %>
 
 <main>
@@ -33,6 +36,20 @@
             <h2 class="titulos">Formulario para reservar habitacion</h2>
             
             <div class="formulario">
+                
+                <% if(checkInAntesError!=null){ %>
+                    <label for="">
+                        <p class="mensaje-error"><%= checkInAntesError %></p>
+                        <% sesion.setAttribute("checkInAntesError", null); %>
+                    </label>
+                <% } %>
+                
+                <% if(habitacionOcupada!=null){ %>
+                    <label for="">
+                        <p class="mensaje-error"><%= habitacionOcupada %></p>
+                        <% sesion.setAttribute("habitacionOcupada", null); %>
+                    </label>
+                <% } %>
                 
                 <form action="SvtReserva" method="POST">
                 

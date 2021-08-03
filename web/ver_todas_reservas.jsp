@@ -33,14 +33,14 @@
     
     <section class="animate__animated">
         
-        <h2 class="titulos">Todos los huéspedes</h2>
+        <h2 class="titulos">Todas las reservas</h2>
         
         <div class="grid-3-columnas">
             <p class="grid-indicador-1024">Check-In</p>
             <p class="grid-indicador-1024">Check-Out</p>
             <p class="grid-indicador-1024">Habitación</p>
             <p class="grid-indicador-1024">Huesped a cargo</p>
-            <p class="grid-indicador-1024">Cantidad de Personas</p>
+            <p class="grid-indicador-1024">Personas</p>
             <p class="grid-indicador-1024">Profesion</p>        
         </div>    
         
@@ -51,16 +51,12 @@
             
                 <div>
                     <p class="grid-indicador">Check-In</p>
-                    <!--<p class="grid-dato"><%= res.getCheckIn().get(Calendar.DAY_OF_MONTH) + "/" + res.getCheckIn().get(Calendar.MONTH) + "/" + res.getCheckIn().get(Calendar.YEAR) %></p>-->
-                    <% Instant instante1 = res.getCheckIn().toInstant(); %>
-                    <p class="grid-dato"><%= instante1 %></p>
+                    <p class="grid-dato"><%= (res.getCheckIn().get(Calendar.DAY_OF_MONTH) + 1) + "/" + (res.getCheckIn().get(Calendar.MONTH) + 1) + "/" + res.getCheckIn().get(Calendar.YEAR) %></p>
                 </div>
 
                 <div>
                     <p class="grid-indicador">Check-Out</p>
-                    <!--<p class="grid-dato"><%= res.getCheckOut().get(Calendar.DAY_OF_MONTH) + "/" + res.getCheckOut().get(Calendar.MONTH) + "/" + res.getCheckOut().get(Calendar.YEAR) %></p>-->
-                    <% Instant instante2 = res.getCheckOut().toInstant(); %>
-                    <p class="grid-dato"><%= instante2 %></p>                    
+                    <p class="grid-dato"><%= (res.getCheckOut().get(Calendar.DAY_OF_MONTH) + 1) + "/" + (res.getCheckOut().get(Calendar.MONTH) + 1) + "/" + res.getCheckOut().get(Calendar.YEAR) %></p>
                 </div>
 
                 <div>
@@ -80,13 +76,23 @@
 
                 <div>
                     <p class="grid-indicador">Profesión</p>
-                    <p class="grid-dato">Nothing</p>
+                    <p class="grid-dato"><%= res.getHuesped().getProfesion() %></p>
                 </div>
 
-                <div class="grid-boton-modificar">
-                    <a class="" href="#">Modificar</a>
-                </div>
-            
+                <form method="post" action="SvtModificar">
+                    <div class="grid-boton-modificar">
+                        <input type="hidden" name="id" value="<%= res.getId() %>">
+                        <button type="submit" class="modificar">Editar</button>
+                    </div>
+                </form>
+
+                <form method="post" action="SvtDetalles">
+                    <div class="grid-boton-modificar">
+                        <input type="hidden" name="id" value="<%= res.getId() %>">
+                        <button type="submit" class="detalles">Detalles</button>
+                    </div>
+                </form>                           
+        
             </div>
         
         <% } %>

@@ -40,10 +40,8 @@
             <a href="ver_todos_huespedes.jsp" class="boton-verdev2">Ver todos los huéspedes</a>
             <a href="ver_todas_reservas.jsp" class="boton-verdev2">Verificar todas las reservas</a>
             <a href="tipo_habitacion_form.jsp" class="boton-verdev2">Ver ganancias diarias</a>
-            
-            <form action="SvtPrecargaTipoHabitaciones" method="POST" class="formulario-link">
-                <input type="submit" class="boton-verdev2" value="Ver ganancias mensuales">                
-            </form>
+            <a href="tipo_habitacion_form.jsp" class="boton-verdev2">Ver ganancias mensuales</a>
+            <a href="otros_empleados_reservas.jsp" class="boton-verdev2">Ver reservas de otros empleados</a>
             
         </div>
         

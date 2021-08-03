@@ -25,6 +25,7 @@
                     <% if(loginError != null) { %>
                         <label for="">
                             <p class="mensaje-error"><%= loginError %></p>
+                            <% sesion.setAttribute("loginError", null); %>
                         </label>
                     <% } %>
                 

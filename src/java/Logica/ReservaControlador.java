@@ -39,4 +39,8 @@ public class ReservaControlador {
         return reservaControlador.obtenerTodasLasReservas();
     }
     
+    public Reserva obtenerReservaPorId(int id){
+        return reservaControlador.obtenerReservaPorId(id);
+    }
+    
 }

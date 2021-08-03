@@ -136,12 +136,12 @@ public class Reserva implements Serializable {
         return habitacion;
     }
 
-    public Persona getHuesped() {
-        return huesped;
+    public Huesped getHuesped() {
+        return (Huesped) huesped;
     }
 
-    public Persona getUsuarioAlta() {
-        return usuarioAlta;
+    public Empleado getUsuarioAlta() {
+        return (Empleado) usuarioAlta;
     }
 
     public boolean isEstaActiva() {

@@ -51,9 +51,18 @@ public class EmpleadoControlador {
         return null;
     }
     
+    public List<Empleado> obtenerTodosLosEmpleados(){
+        return empleadoControlador.obtenerTodosLosEmpleados();
+    }
+    
     
     public Empleado obtenerEmpleadoPorId(int idEmpleado){
         return empleadoControlador.obtenerEmpleadoPorId(idEmpleado);
+    }
+    
+    
+    public void incrementarReservasHechas(Empleado empleado){
+        empleadoControlador.incrementarReservasHechas(empleado);
     }
     
 }
