@@ -35,6 +35,21 @@ public class ReservaControlador {
         reservaControlador.agregarReserva(nuevaReserva);
     }
     
+    public void actualizarReserva(int id, Calendar checkIn, Calendar checkOut, int idHabitacion, int idHuesped, int cantPersonas, int idEmpleadoAlta){
+        Reserva nuevaReserva = new Reserva();
+        
+        nuevaReserva.setId(id);
+        nuevaReserva.setCheckIn(checkIn);
+        nuevaReserva.setCheckOut(checkOut);
+        nuevaReserva.setHabitacion(habitacionControlador.obtenerNumeroHabitacion(idHabitacion));
+        nuevaReserva.setHuesped(huespedControlador.obtenerHuespedPorId(idHuesped));
+        nuevaReserva.setCantPersonas(cantPersonas);
+        nuevaReserva.setUsuarioAlta(empleadoControlador.obtenerEmpleadoPorId(idEmpleadoAlta));
+        nuevaReserva.setEstaActiva(true);
+        
+        reservaControlador.actualizarReserva(nuevaReserva);
+    }
+    
     public List<Reserva> obtenerTodasLasReservas(){
         return reservaControlador.obtenerTodasLasReservas();
     }

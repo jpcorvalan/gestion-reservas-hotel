@@ -7,6 +7,8 @@ package Persistencia;
 
 import Logica.Reserva;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -18,6 +20,14 @@ public class ReservaPersistenciaControlador {
     
     public void agregarReserva(Reserva reserva){
         reservaJpa.create(reserva);
+    }
+    
+    public void actualizarReserva(Reserva reserva){
+        try {
+            reservaJpa.edit(reserva);
+        } catch (Exception ex) {
+            Logger.getLogger(ReservaPersistenciaControlador.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
      
     public List<Reserva> obtenerTodasLasReservas(){

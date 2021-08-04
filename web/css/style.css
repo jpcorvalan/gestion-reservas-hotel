@@ -516,6 +516,30 @@ input{
     justify-content: space-around;    
 }
 
+/*----- Vista de Carga exitosa -----*/
+
+
+
+
+
+
+
+
+
+/*----- Mensaje advertencia en edición de reserva -----*/
+
+.advertencia-edicion-reserva{
+    display:flex;
+    align-items: center;    
+    
+    min-width: 320px;
+    max-width: max-content;
+    
+    margin: 10px auto;
+}
+
+/*----- Mensaje advertencia en edición de reserva -----*/
+
 
 
 
