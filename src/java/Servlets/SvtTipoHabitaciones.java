@@ -64,15 +64,19 @@ public class SvtTipoHabitaciones extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String tipoHab = request.getParameter("tematica");
-        int cantPersonas = Integer.parseInt(request.getParameter("cantidad-personas"));
-        String descripcion = request.getParameter("descripcion");
-        
-        HabitacionControlador control = new HabitacionControlador();
-        
-        control.crearTematicaHabitacion(tipoHab, cantPersonas, descripcion);
-        
-        response.sendRedirect("carga_exitosa_view.jsp");
+        try{
+            String tipoHab = request.getParameter("tematica");
+            int cantPersonas = Integer.parseInt(request.getParameter("cantidad-personas"));
+            String descripcion = request.getParameter("descripcion");
+
+            HabitacionControlador control = new HabitacionControlador();
+
+            control.crearTematicaHabitacion(tipoHab, cantPersonas, descripcion);
+
+            response.sendRedirect("carga_exitosa_view.jsp");
+        } catch (NumberFormatException ex){
+            response.sendRedirect("tipo_habitacion_form.jsp");
+        }
     }
 
     /**

@@ -7,6 +7,8 @@ package Servlets;
 
 import Logica.Empleado;
 import Logica.EmpleadoControlador;
+import Logica.Habitacion;
+import Logica.HabitacionControlador;
 import Logica.ManejadorDeFechas;
 import Logica.Reserva;
 import Logica.ReservaControlador;
@@ -124,45 +126,59 @@ public class SvtReserva extends HttpServlet {
             int idEmpleadoAlta = (int) sesion.getAttribute("id");
             
             
-            // Se convierten las fechas a Calendar
+            // Se convierten las fechas a Calendar 
             Calendar checkIn = ManejadorDeFechas.conversorACalendar(checkInString);
             Calendar checkOut = ManejadorDeFechas.conversorACalendar(checkOutString);
             
             
-            // Instanciamos nuestra clase ManejadorDeFechas para utilizar el método "conflictoConFechasReservadas"
-            ManejadorDeFechas comprobador = new ManejadorDeFechas();
+            // Obtenemos el número de la habitación para comprobar la cantidad de personas que puede albergar
+            HabitacionControlador habitacionControlador = new HabitacionControlador();            
+            Habitacion habitacion = habitacionControlador.obtenerNumeroHabitacion(idHabitacion);
             
-            // Se verifica que las fechas de CheckIn/Out sean válidas
-            if(checkIn.compareTo(checkOut) <= 0){
+            
+            // Comparamos la cantidad de personas que puede albergar con el dato que se acaba de recibir.
+            if(habitacion.getTematica().getCantidadPersonas() >= cantPersonas){
+            
+                // Instanciamos nuestra clase ManejadorDeFechas para utilizar el método "conflictoConFechasReservadas"
+                ManejadorDeFechas comprobador = new ManejadorDeFechas();
 
-                // Si la comprobación da FALSE, significa que no hay conflicto entre fechas y puede realizarse la reserva
-                if(!comprobador.conflictoConFechasReservadas(checkIn, checkOut, idHabitacion)){
-                    ReservaControlador reservaControlador = new ReservaControlador();
+                // Se verifica que las fechas de CheckIn/Out sean válidas
+                if(checkIn.compareTo(checkOut) <= 0){
 
-                    reservaControlador.agregarReserva(checkIn, checkOut, idHabitacion, idHuesped, cantPersonas, idEmpleadoAlta);
-                    
-                    EmpleadoControlador empleadoControlador = new EmpleadoControlador();                    
-                    Empleado empleadoQueReservo = empleadoControlador.obtenerEmpleadoPorId(idEmpleadoAlta);
-                    empleadoQueReservo.setCantidadReservas(empleadoQueReservo.getCantidadReservas() + 1);
-                    
-                    empleadoControlador.incrementarReservasHechas(empleadoQueReservo);
-                    
+                    // Si la comprobación da FALSE, significa que no hay conflicto entre fechas y puede realizarse la reserva
+                    if(!comprobador.conflictoConFechasReservadas(checkIn, checkOut, idHabitacion)){
+                        ReservaControlador reservaControlador = new ReservaControlador();
 
-                    response.sendRedirect("carga_exitosa_view.jsp");
+                        reservaControlador.agregarReserva(checkIn, checkOut, idHabitacion, idHuesped, cantPersonas, idEmpleadoAlta);
+
+                        EmpleadoControlador empleadoControlador = new EmpleadoControlador();                    
+                        Empleado empleadoQueReservo = empleadoControlador.obtenerEmpleadoPorId(idEmpleadoAlta);
+                        empleadoQueReservo.setCantidadReservas(empleadoQueReservo.getCantidadReservas() + 1);
+
+                        empleadoControlador.incrementarReservasHechas(empleadoQueReservo);
+
+
+                        response.sendRedirect("carga_exitosa_view.jsp");
+                    }else{
+                        sesion.setAttribute("habitacionOcupada", "La habitación solicitada se encuentra reservada en ese intervalo de días. Seleccione otra habitación, o cambie las fechas.");
+
+                        response.sendRedirect("reservar_habitacion_form.jsp");
+                    }
+
                 }else{
-                    sesion.setAttribute("habitacionOcupada", "La habitación solicitada se encuentra reservada en ese intervalo de días. Seleccione otra habitación, o cambie las fechas.");
-                    
+                    sesion.setAttribute("checkInAntesError", "La fecha de Check-In es antes que la del Check-Out, revise las fechas e intente de nuevo.");
+
                     response.sendRedirect("reservar_habitacion_form.jsp");
                 }
             
-            }else{
-                sesion.setAttribute("checkInAntesError", "La fecha de Check-In es antes que la del Check-Out, revise las fechas e intente de nuevo.");
+            } else {
+                sesion.setAttribute("cantidadPersonasError", "La cantidad de personas sobrepasa el límite permitido para la habitación. Escoga otra habitación o reduzca el número de personas.");
                 
                 response.sendRedirect("reservar_habitacion_form.jsp");
             }
             
-        } catch (ParseException ex) {
-            Logger.getLogger(SvtReserva.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException | NumberFormatException ex) {
+            response.sendRedirect("reservar_habitacion_form.jsp");
         }
         
         

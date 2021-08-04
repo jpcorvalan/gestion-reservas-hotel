@@ -100,6 +100,7 @@ public class SvtHuesped extends HttpServlet {
             
         } catch (ParseException ex) {
             Logger.getLogger(SvtHuesped.class.getName()).log(Level.SEVERE, null, ex);
+            response.sendRedirect("huesped_form.jsp");
         }
         
     }

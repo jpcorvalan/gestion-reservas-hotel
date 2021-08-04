@@ -75,16 +75,21 @@ public class SvtNuevaHabitacion extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        int piso = Integer.parseInt(request.getParameter("piso"));
-        int numHab = Integer.parseInt(request.getParameter("nro-habitacion"));
-        double precio = Double.parseDouble(request.getParameter("costo"));
-        int idTematica = Integer.parseInt(request.getParameter("tematica"));
-        
-        HabitacionControlador control = new HabitacionControlador();
-        
-        control.crearNuevaHabitacion(numHab, piso, precio, idTematica);
+        try{
+            int piso = Integer.parseInt(request.getParameter("piso"));
+            int numHab = Integer.parseInt(request.getParameter("nro-habitacion"));
+            double precio = Double.parseDouble(request.getParameter("costo"));
+            int idTematica = Integer.parseInt(request.getParameter("tematica"));
 
-        response.sendRedirect("carga_exitosa_view.jsp");
+            HabitacionControlador control = new HabitacionControlador();
+
+            control.crearNuevaHabitacion(numHab, piso, precio, idTematica);
+
+            response.sendRedirect("carga_exitosa_view.jsp");
+            
+        } catch(NumberFormatException ex){
+            response.sendRedirect("habitacion_form.jsp");
+        }
         
     }
 

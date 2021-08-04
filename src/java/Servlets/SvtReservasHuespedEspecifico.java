@@ -85,8 +85,6 @@ public class SvtReservasHuespedEspecifico extends HttpServlet {
         sesion.setAttribute("listaReservasDeHuesped", reservasDeHuesped);
         response.sendRedirect("reservas_huesped_especifico.jsp");
         
-        
-        
     }
 
     /**

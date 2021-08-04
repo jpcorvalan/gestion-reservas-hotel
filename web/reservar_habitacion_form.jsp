@@ -25,6 +25,7 @@
     
     String checkInAntesError = (String) sesion.getAttribute("checkInAntesError");
     String habitacionOcupada = (String) sesion.getAttribute("habitacionOcupada");
+    String cantidadPersonasError = (String) sesion.getAttribute("cantidadPersonasError");
 %>
 
 <main>
@@ -37,19 +38,32 @@
             
             <div class="formulario">
                 
-                <% if(checkInAntesError!=null){ %>
-                    <label for="">
-                        <p class="mensaje-error"><%= checkInAntesError %></p>
-                        <% sesion.setAttribute("checkInAntesError", null); %>
-                    </label>
-                <% } %>
                 
-                <% if(habitacionOcupada!=null){ %>
-                    <label for="">
-                        <p class="mensaje-error"><%= habitacionOcupada %></p>
-                        <% sesion.setAttribute("habitacionOcupada", null); %>
-                    </label>
-                <% } %>
+                <!-- Bloque que advierte sobre los posibles errores que ocurran al intentar hacer una reserva -->
+                
+                    <% if(checkInAntesError!=null){ %>
+                        <label for="">
+                            <p class="mensaje-error"><%= checkInAntesError %></p>
+                            <% sesion.setAttribute("checkInAntesError", null); %>
+                        </label>
+                    <% } %>
+
+                    <% if(habitacionOcupada!=null){ %>
+                        <label for="">
+                            <p class="mensaje-error"><%= habitacionOcupada %></p>
+                            <% sesion.setAttribute("habitacionOcupada", null); %>
+                        </label>
+                    <% } %>
+
+                    <% if(cantidadPersonasError!=null){ %>
+                        <label for="">
+                            <p class="mensaje-error"><%= cantidadPersonasError %></p>
+                            <% sesion.setAttribute("cantidadPersonasError", null); %>
+                        </label>
+                    <% } %>
+                    
+                <!-- Bloque que advierte sobre los posibles errores que ocurran al intentar hacer una reserva -->
+                
                 
                 <form action="SvtReserva" method="POST">
                 
@@ -69,7 +83,7 @@
 
                             <% for(Habitacion habitacion : habitacionControlador.obtenerTodasLasHabitaciones()){ %>
 
-                                <option value="<%= habitacion.getNroHabitacion() %>"> <%=habitacion.getNroHabitacion()%> - <%=habitacion.getTematica().getNombreHabitacion() %></option>
+                            <option value="<%= habitacion.getNroHabitacion() %>"> <%=habitacion.getNroHabitacion()%> - <%=habitacion.getTematica().getNombreHabitacion() %> - <%= habitacion.getTematica().getCantidadPersonas() %> persona/s</option>
 
                             <% } %>
 
