@@ -82,7 +82,7 @@
                 <form action="SvtModificarHuespedEspecifico" method="post">
                     <div class="grid-boton-modificar">
                         <input name="id" type="hidden" value="<%= huesped.getId() %>">
-                        <button type="submit" class="modificar">Modificar</button>
+                        <button type="submit" class="modificar">Editar</button>
                     </div>
                 </form>
                 

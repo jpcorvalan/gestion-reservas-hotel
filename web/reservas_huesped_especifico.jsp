@@ -37,15 +37,15 @@
                     <p class="grid-indicador-1024">Check-Out</p>
                     <p class="grid-indicador-1024">Habitación</p>
                     <p class="grid-indicador-1024">Personas</p>
-                    <p class="grid-indicador-1024">Editar</p>
-                    <p class="grid-indicador-1024">Detalles</p>
+                    <p class="grid-indicador-1024"> </p>
+                    <p class="grid-indicador-1024"> </p>
                 </div>
     
     <%      } else {                            %>
                 <h2 class="titulos animate__animated animate__fadeIn">No se hayaron reservas</h2>
     <%      }                                   %>           
                 
-    <%      for(Reserva res : reservasHuesped){                                    %>
+    <%      for(Reserva res : reservasHuesped){ %>
     
                 <div class="grid-3-columnas">
                     
@@ -74,14 +74,14 @@
                         <p class="grid-dato"><%= res.getCantPersonas() %></p>
                     </div>
                     
-                    <form method="post" action="SvtModificar">
+                    <form method="post" action="SvtModificarReserva">
                         <div class="grid-boton-modificar">
                             <input type="hidden" name="id" value="<%= res.getId() %>">
                             <button type="submit" class="modificar">Editar</button>
                         </div>
                     </form>
 
-                    <form method="post" action="SvtDetalles">
+                    <form method="post" action="SvtDetallesReserva">
                         <div class="grid-boton-modificar">
                             <input type="hidden" name="id" value="<%= res.getId() %>">
                             <button type="submit" class="detalles">Detalles</button>

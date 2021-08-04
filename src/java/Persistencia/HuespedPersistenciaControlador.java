@@ -7,6 +7,8 @@ package Persistencia;
 
 import Logica.Huesped;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -18,6 +20,14 @@ public class HuespedPersistenciaControlador {
     
     public void agregarHuesped(Huesped huesped){
         huespedJpa.create(huesped);
+    }
+    
+    public void actualizarHuesped(Huesped huesped){
+        try {
+            huespedJpa.edit(huesped);
+        } catch (Exception ex) {
+            Logger.getLogger(HuespedPersistenciaControlador.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     public List<Huesped> obtenerTodosLosHuespedes(){

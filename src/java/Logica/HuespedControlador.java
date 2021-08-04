@@ -30,6 +30,20 @@ public class HuespedControlador {
         control.agregarHuesped(huesped);
     }
     
+    public void actualizarHuesped(int id, String dni, String nombre, String apellido, Calendar fechaNacimiento, String direccion, String profesion){
+        Huesped huesped = new Huesped();
+        
+        huesped.setId(id);
+        huesped.setDni(dni);
+        huesped.setNombre(nombre);
+        huesped.setApellido(apellido);
+        huesped.setFechaNacimiento(fechaNacimiento);
+        huesped.setDireccion(direccion);
+        huesped.setProfesion(profesion);
+        
+        control.actualizarHuesped(huesped);
+    }
+    
     public List<Huesped> obtenerTodosLosHuespedes(){
         return control.obtenerTodosLosHuespedes();
     }

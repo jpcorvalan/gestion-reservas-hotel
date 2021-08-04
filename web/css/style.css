@@ -524,7 +524,7 @@ input{
 
 
 
-/*----- MEDIA QUERIES - 768px*/
+/*----- MEDIA QUERIES - 768px ----- */
 @media(min-width: 768px){
 
 .boton-rojo{    
@@ -584,6 +584,9 @@ input{
 /*----- MEDIA QUERIES - 1024px -----*/
 
 @media(min-width: 1024px){
+    
+    
+/*----- Aspectos generales - INICIO -----*/
     
 .boton-rojo{    
     margin: 0.5rem;
@@ -665,6 +668,8 @@ input{
     justify-content: center;
     align-items: center;
 }
+
+/*----- Aspectos generales - FIN -----*/
 
 
 
