@@ -6,8 +6,11 @@
 package Servlets;
 
 import Logica.HuespedControlador;
+import Logica.Reserva;
+import Logica.ReservaControlador;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -75,6 +78,14 @@ public class SvtEliminarHuesped extends HttpServlet {
             throws ServletException, IOException {
         
         int idHuesped = Integer.parseInt(request.getParameter("id"));
+        
+        ReservaControlador reservaControlador = new ReservaControlador();
+        List<Reserva> reservasDelHuesped = reservaControlador.obtenerReservasDeHuespedEspecifico(idHuesped);
+        
+        for(Reserva res : reservasDelHuesped){
+            reservaControlador.eliminarReserva(res.getId());
+        }
+        
         HuespedControlador huespedControlador = new HuespedControlador();
         huespedControlador.eliminarHuesped(idHuesped);
         

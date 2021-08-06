@@ -44,11 +44,12 @@
             <p class="grid-indicador-1024">Check-In</p>
             <p class="grid-indicador-1024">Check-Out</p>
             <p class="grid-indicador-1024">Habitación</p>
-            <p class="grid-indicador-1024">Huesped a cargo</p>
+            <p class="grid-indicador-1024">Huesped</p>
             <p class="grid-indicador-1024">Personas</p>
             <p class="grid-indicador-1024">Profesion</p>      
-            <p class="grid-indicador-1024">Editar</p>
-            <p class="grid-indicador-1024">Detalles</p>
+            <p class="grid-indicador-1024"> </p>
+            <p class="grid-indicador-1024"> </p>
+            <p class="grid-indicador-1024"> </p>
         </div>    
         
         
@@ -100,7 +101,14 @@
                         <input type="hidden" name="id" value="<%= res.getId() %>">
                         <button type="submit" class="detalles">Detalles</button>
                     </div>
-                </form>                           
+                </form>
+                        
+                <form action="SvtEliminarReserva" method="post">
+                    <div class="grid-boton-modificar">
+                        <input type="hidden" name="id" value="<%= res.getId() %>">
+                        <button onclick="return confirmDeleteReserva()" type="submit" class="eliminar">Eliminar</button>
+                    </div>
+                </form>
         
             </div>
         

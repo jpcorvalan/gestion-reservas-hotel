@@ -139,7 +139,7 @@ public class SvtModificarReserva extends HttpServlet {
                 
                 System.out.println("Parse Exception?");
                 // En caso de haber un error con la conversión de las fechas o de los Strings a Int, la página se recarga.
-//                response.sendRedirect("modificar_reserva.jsp");
+                response.sendRedirect("modificar_reserva.jsp");
             }
         
     }

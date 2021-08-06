@@ -38,6 +38,7 @@
             <p class="grid-indicador-1024">Profesion</p>       
             <p class="grid-indicador-1024"> </p>
             <p class="grid-indicador-1024"> </p>
+            <p class="grid-indicador-1024"> </p>
         </div>    
         
         
@@ -84,12 +85,20 @@
                         <input name="id" type="hidden" value="<%= huesped.getId() %>">
                         <button type="submit" class="modificar">Editar</button>
                     </div>
-                </form>
+                </form>                   
+
                 
                 <form action="SvtReservasHuespedEspecifico" method="post">
                     <div class="grid-boton-modificar">
                         <input name="id" type="hidden" value="<%= huesped.getId() %>">
                         <button type="submit" class="detalles">Reservas</button>
+                    </div>
+                </form>
+                
+                <form action="SvtEliminarHuesped" method="post">
+                    <div class="grid-boton-modificar">
+                        <input name="id" type="hidden" value="<%= huesped.getId() %>">
+                        <button onclick="return confirmDeleteHuesped()" type="submit" class="eliminar">Eliminar</button>
                     </div>
                 </form>
             
