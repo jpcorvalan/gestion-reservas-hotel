@@ -6,6 +6,7 @@
 package Persistencia;
 
 import Logica.Huesped;
+import Persistencia.exceptions.NonexistentEntityException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -36,6 +37,14 @@ public class HuespedPersistenciaControlador {
     
     public Huesped obtenerHuespedPorId(int idHuesped){
         return huespedJpa.findHuesped(idHuesped);
+    }
+    
+    public void eliminarHuesped(int idHuesped){
+        try {
+            huespedJpa.destroy(idHuesped);
+        } catch (NonexistentEntityException ex) {
+            Logger.getLogger(HuespedPersistenciaControlador.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 }

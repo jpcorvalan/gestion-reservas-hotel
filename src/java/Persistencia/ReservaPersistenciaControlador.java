@@ -6,6 +6,7 @@
 package Persistencia;
 
 import Logica.Reserva;
+import Persistencia.exceptions.NonexistentEntityException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -40,6 +41,14 @@ public class ReservaPersistenciaControlador {
     
     public List<Reserva> obtenerReservasDeHuespedEspecifico(int idHuesped){
         return reservaJpa.findReservaByIdHuesped(idHuesped);
+    }
+    
+    public void eliminarReserva(int idReserva){
+        try {
+            reservaJpa.destroy(idReserva);
+        } catch (NonexistentEntityException ex) {
+            Logger.getLogger(ReservaPersistenciaControlador.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 }

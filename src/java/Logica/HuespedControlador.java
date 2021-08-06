@@ -52,4 +52,8 @@ public class HuespedControlador {
         return control.obtenerHuespedPorId(idHuesped);
     }
     
+    public void eliminarHuesped(int idHuesped){
+        control.eliminarHuesped(idHuesped);
+    }
+    
 }

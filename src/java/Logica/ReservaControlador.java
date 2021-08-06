@@ -62,4 +62,9 @@ public class ReservaControlador {
         return reservaControlador.obtenerReservasDeHuespedEspecifico(idHuesped);
     }
     
+    public void eliminarReserva(int idReserva){
+        reservaControlador.eliminarReserva(idReserva);
+    }
+    
+    
 }
