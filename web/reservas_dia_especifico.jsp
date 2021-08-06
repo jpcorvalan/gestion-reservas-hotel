@@ -90,12 +90,12 @@
 
                     <div>
                         <p class="grid-indicador">Check-In</p>
-                        <p class="grid-dato"><%= (res.getCheckIn().get(Calendar.DAY_OF_MONTH) + 1) + "/" + (res.getCheckIn().get(Calendar.MONTH) + 1) + "/" + res.getCheckIn().get(Calendar.YEAR) %></p>
+                        <p class="grid-dato"><%= res.getCheckIn().toInstant().toString().substring(0, 10) %></p>
                     </div>
 
                     <div>
                         <p class="grid-indicador">Check-Out</p>
-                        <p class="grid-dato"><%= (res.getCheckOut().get(Calendar.DAY_OF_MONTH) + 1) + "/" + (res.getCheckOut().get(Calendar.MONTH) + 1) + "/" + res.getCheckOut().get(Calendar.YEAR) %></p>
+                        <p class="grid-dato"><%= res.getCheckOut().toInstant().toString().substring(0, 10) %></p>
                     </div>
 
                     <div>

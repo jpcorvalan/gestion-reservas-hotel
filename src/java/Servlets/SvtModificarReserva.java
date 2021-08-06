@@ -69,31 +69,77 @@ public class SvtModificarReserva extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+            // Obtenemos los datos de la sesión para poder agregar los avisos en caso de errores en el formulario
             HttpSession sesion = request.getSession();
 
             try{
+                
+                // Obtenemos los datos del formulario y lo guardamos en variables
                 int idReserva = Integer.parseInt(request.getParameter("id"));
+                String checkInString = request.getParameter("checkin");
+                String checkOutString = request.getParameter("checkout");
                 int idHabitacion = Integer.parseInt(request.getParameter("habitacion"));
                 int idHuesped = Integer.parseInt(request.getParameter("huesped"));
                 int cantPersonas = Integer.parseInt(request.getParameter("cantidad-personas"));
-
-                ReservaControlador reservaControlador = new ReservaControlador();
-
-                Reserva reservaAEditar = reservaControlador.obtenerReservaPorId(idReserva);
-
+                
+                
+                // Convertimos ambas fechas de String a Calendar
+                Calendar checkIn = ManejadorDeFechas.conversorACalendar(checkInString);
+                Calendar checkOut = ManejadorDeFechas.conversorACalendar(checkOutString);
+                
+                
+                // Instanciamos el controlador de las habitaciones para buscar la habitación seleccionada por el usuario.
                 HabitacionControlador habitacionControlador = new HabitacionControlador();
-                Habitacion habitacion = habitacionControlador.obtenerNumeroHabitacion(idHabitacion);            
-
+                Habitacion habitacion = habitacionControlador.obtenerNumeroHabitacion(idHabitacion);
+                
+                
+                // Si la cantidad de personas de la habitación concuerda con la cantidad de personas de la reserva
                 if(habitacion.getTematica().getCantidadPersonas() >= cantPersonas){
-                    reservaControlador.actualizarReserva(idReserva, reservaAEditar.getCheckIn(), reservaAEditar.getCheckOut(), idHabitacion, idHuesped, cantPersonas, reservaAEditar.getUsuarioAlta().getId());
-                    response.sendRedirect("edicion_exitosa.jsp");
+                    
+                    // Si la fecha de CheckIn está antes de la fecha del CheckOut                    
+                    if(checkIn.compareTo(checkOut) <= 0){
+                        
+                        // Instanciamos el manejador de fechas
+                        ManejadorDeFechas manejador = new ManejadorDeFechas();
+                        
+                        // Utilizamos el método sobrecargado conflictoConFechasReservadas, que recibe también el id de la reserva.
+                        // Si el método devuelve FALSE, entonces no hay conflicto de fechas y puede editarse la reserva.
+                        if(!manejador.conflictoConFechasReservadas(checkIn, checkOut, idHabitacion, idReserva)){
+                            
+                            // Instanciamos el controlador de las reservas para obtener el id del empleado que realizó la reserva previamente, que no será modificado.                            
+                            ReservaControlador reservaControlador = new ReservaControlador();
+                            int idEmpleado = reservaControlador.obtenerReservaPorId(idReserva).getUsuarioAlta().getId();
+                            
+                            // Y también para hacer válida finalmente la edición de la reserva.
+                            reservaControlador.actualizarReserva(idReserva, checkIn, checkOut, idHabitacion, idHuesped, cantPersonas, idEmpleado);
+                            
+                            // Redireccionamos a la pantalla de éxito.
+                            response.sendRedirect("edicion_exitosa.jsp");
+                            
+                        }else{
+                            sesion.setAttribute("habitacionOcupada", "La habitación solicitada se encuentra reservada en ese intervalo de días. Seleccione otra habitación, o cambie las fechas.");
+
+                            response.sendRedirect("modificar_reserva.jsp");   
+                        }                            
+                        
+                    }else{
+                        sesion.setAttribute("checkInAntesError", "La fecha de Check-In es antes que la del Check-Out, revise las fechas e intente de nuevo.");
+
+                        response.sendRedirect("modificar_reserva.jsp");
+                    }
+                    
                 }else{
                     sesion.setAttribute("cantidadPersonasError", "La cantidad de personas sobrepasa el límite permitido para la habitación. Escoga otra habitación o reduzca el número de personas.");
-                    response.sendRedirect("modificar_reserva.jsp");
-                }                
                 
-            }catch (NumberFormatException ex) {                
-                response.sendRedirect("modificar_reserva.jsp");
+                    response.sendRedirect("modificar_reserva.jsp");
+                }
+                
+                
+            }catch (ParseException | NumberFormatException ex) {
+                
+                System.out.println("Parse Exception?");
+                // En caso de haber un error con la conversión de las fechas o de los Strings a Int, la página se recarga.
+//                response.sendRedirect("modificar_reserva.jsp");
             }
         
     }

@@ -5,6 +5,10 @@
 --%>
 
 
+<%@page import="java.util.Date"%>
+<%@page import="java.time.temporal.ChronoField"%>
+<%@page import="java.time.temporal.TemporalField"%>
+<%@page import="java.text.DateFormat.Field"%>
 <%@page import="Logica.Reserva"%>
 <%@page import="Logica.ReservaControlador"%>
 <%@page import="java.time.Instant"%>
@@ -34,6 +38,7 @@
     <section class="animate__animated">
         
         <h2 class="titulos">Todas las reservas</h2>
+        <p class="indicador text-center">Las fechas tienen un formato de Año-Mes-Día</p>
         
         <div class="grid-3-columnas">
             <p class="grid-indicador-1024">Check-In</p>
@@ -53,12 +58,14 @@
             
                 <div>
                     <p class="grid-indicador">Check-In</p>
-                    <p class="grid-dato"><%= (res.getCheckIn().get(Calendar.DAY_OF_MONTH) + 1) + "/" + (res.getCheckIn().get(Calendar.MONTH) + 1) + "/" + res.getCheckIn().get(Calendar.YEAR) %></p>
+                    <!--<p class="grid-dato"><%= (res.getCheckIn().get(Calendar.DAY_OF_MONTH) + 1) + "/" + (res.getCheckIn().get(Calendar.MONTH) + 1) + "/" + res.getCheckIn().get(Calendar.YEAR) %></p>-->
+                    <p class="grid-dato"><%= res.getCheckIn().toInstant().toString().substring(0, 10) %></p>
                 </div>
 
                 <div>
                     <p class="grid-indicador">Check-Out</p>
-                    <p class="grid-dato"><%= (res.getCheckOut().get(Calendar.DAY_OF_MONTH) + 1) + "/" + (res.getCheckOut().get(Calendar.MONTH) + 1) + "/" + res.getCheckOut().get(Calendar.YEAR) %></p>
+                    <!--<p class="grid-dato"><%= (res.getCheckOut().get(Calendar.DAY_OF_MONTH) + 1) + "/" + (res.getCheckOut().get(Calendar.MONTH) + 1) + "/" + res.getCheckOut().get(Calendar.YEAR) %></p>-->
+                    <p class="grid-dato"><%= res.getCheckOut().toInstant().toString().substring(0, 10) %></p>
                 </div>
 
                 <div>

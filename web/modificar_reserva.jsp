@@ -36,9 +36,9 @@
     
     <section>
         
-        <div class="advertencia-edicion-reserva">
+<!--        <div class="advertencia-edicion-reserva">
             <p class="mensaje-error">Debido a que la edición de los campos:<br>Check-In<br>Check-Out<br>Habitación<br><br>Pueden interferir con otras reservas ya realizadas, solo se permite editar:<br><br>Huésped a cargo<br>Cantidad de personas</p>
-        </div>
+        </div>-->
         
         
         <div class="container bloque-formulario-celeste animate__animated animate__backInUp">
@@ -79,20 +79,26 @@
                 
                     <label for="">
                         <p class="indicador">Check-In</p>
-                        <input name="checkin" class="campos text-light bg-dark border border-white" type="text" value="<%= reserva.getCheckIn().get(Calendar.DAY_OF_MONTH) %>/<%= reserva.getCheckIn().get(Calendar.MONTH)+1 %>/<%= reserva.getCheckIn().get(Calendar.YEAR)+1 %>" disabled>
+                        <p class="indicador">Actual: <%= reserva.getCheckIn().get(Calendar.DAY_OF_MONTH) + 1%>/<%= reserva.getCheckIn().get(Calendar.MONTH)+1 %>/<%= reserva.getCheckIn().get(Calendar.YEAR) %></p>
+                        <input name="checkin" class="campos" type="date">
                     </label>
 
                     <label for="">
                         <p class="indicador">Check-Out</p>
-                        <input name="checkout" class="campos text-light bg-dark border border-white" type="text" value="<%= reserva.getCheckOut().get(Calendar.DAY_OF_MONTH) %>/<%= reserva.getCheckOut().get(Calendar.MONTH)+1 %>/<%= reserva.getCheckOut().get(Calendar.YEAR)+1 %>" disabled>
+                        <p class="indicador">Actual: <%= reserva.getCheckOut().get(Calendar.DAY_OF_MONTH) + 1 %>/<%= reserva.getCheckOut().get(Calendar.MONTH)+1 %>/<%= reserva.getCheckOut().get(Calendar.YEAR) %></p>
+                        <input name="checkout" class="campos" type="date">
                     </label>
 
                     <label for="">
                         <p class="indicador">Habitación</p>
-                        <select name="habitacion" id="" class="text-light bg-dark border border-white">
-                            
-                            <option value="<%= reserva.getHabitacion().getNroHabitacion() %>"><%= reserva.getHabitacion().getNroHabitacion() + " - " + reserva.getHabitacion().getTematica().getNombreHabitacion() + " - " + reserva.getHabitacion().getTematica().getCantidadPersonas() %> personas.</option>
-                            
+                        <select name="habitacion" id="">
+
+                            <% for(Habitacion habitacion : habitacionControlador.obtenerTodasLasHabitaciones()){ %>
+
+                                <option value="<%= habitacion.getNroHabitacion() %>"> <%=habitacion.getNroHabitacion()%> - <%=habitacion.getTematica().getNombreHabitacion() %> - <%= habitacion.getTematica().getCantidadPersonas() %> persona/s</option>
+
+                            <% } %>
+
                         </select>
                     </label>
 

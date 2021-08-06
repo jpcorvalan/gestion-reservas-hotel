@@ -7,13 +7,10 @@ package Logica;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.Duration;
 import java.time.Instant;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -91,6 +88,65 @@ public class ManejadorDeFechas {
         }
         
         return false;
+    }
+    
+    
+    
+    
+    public boolean conflictoConFechasReservadas(Calendar checkIn, Calendar checkOut, int nroHabitacion, int idReservaExclusion){
+        
+        // Obtenemos todas las reservas hechas hasta el momento.
+        List<Reserva> reservas = reservaControlador.obtenerTodasLasReservas();
+        
+        
+        // Creamos un array que tendrá todas las reservas menos aquella que viene por Id, que es la que se está modificando.
+        List<Reserva> reservasRestada = new ArrayList<>();
+        
+        
+        // Agregamos todas las reservas al nuevo array excepto aquella que coincide con la que se está editando
+        for(Reserva reservasLog : reservas){
+            if(reservasLog.getId() != idReservaExclusion){
+                reservasRestada.add(reservasLog);
+            }
+        }        
+        
+        
+        // Convertimos las fechas de la nueva reserva a Instant para poder crear nuestro Intervalo de tiempo con Interval 
+        // (los intervalos con esta clase solo pueden armarse con 2 objetos de tipo Instant)
+        Instant nuevaReservaFechaDesde = checkIn.toInstant();
+        Instant nuevaReservaFechaHasta = checkOut.toInstant();
+        
+        
+        // Creamos nuestro Interval con las 2 fechas ya convertidas a Instant
+        Interval intervaloNuevaReserva = Interval.of(nuevaReservaFechaDesde, nuevaReservaFechaHasta);
+        
+        
+        // Comprobamos primero que nuestro arreglo de reservas no esté vacío, caso contrario, la nueva reserva se realiza automáticamente.
+        if(!reservasRestada.isEmpty()){
+            
+            // Si existen reservas, recorremos el arreglo
+            for(Reserva res : reservasRestada){
+                
+                // Se hace la comparación de fechas solo si la habitación requerida ya está ocupada en alguna otra reserva.
+                if(res.getHabitacion().getNroHabitacion() == nroHabitacion){
+                    
+                    // Caso de que la habitación pedida ya esté reservada, se comprueba si las fechas de Check-In/Out de ambas no interseccionan.
+                    Instant reservaGuardadaFechaDesde = res.getCheckIn().toInstant();
+                    Instant reservaGuardadaFechaHasta = res.getCheckOut().toInstant();
+
+                    Interval intervaloReservaGuardada = Interval.of(reservaGuardadaFechaDesde, reservaGuardadaFechaHasta);
+                    
+
+                    // Overlaps da TRUE si las fechas se solapan, FALSE caso contrario, es decir, si da FALSE, SE PUEDE RESERVAR
+                    return intervaloNuevaReserva.overlaps(intervaloReservaGuardada);
+                }
+                
+            }
+            
+        }
+        
+        return false;
+        
     }
     
     
