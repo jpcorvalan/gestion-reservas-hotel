@@ -7,13 +7,17 @@ package Logica;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.time.Instant;
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.TemporalUnit;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.crypto.AEADBadTagException;
 import org.threeten.extra.Interval;
 
 /**
@@ -231,6 +235,29 @@ public class ManejadorDeFechas {
         // Devolverá null si existe ninguna reserva hecha hasta el momento.
         return null;
         
+    }
+    
+    
+    
+    
+    public List<Reserva> obtenerReservasPorIntervaloDeFechas(Calendar fechaInicio, Calendar fechaLimite, List<Reserva> reservasHuesped){
+               
+        Instant fechaIn = fechaInicio.toInstant().truncatedTo(ChronoUnit.DAYS);
+        Instant fechaLim = fechaLimite.toInstant().truncatedTo(ChronoUnit.DAYS);
+        
+        Interval intervaloPedido = Interval.of(fechaIn, fechaLim);
+        
+        List<Reserva> reservasCoincidentes = new ArrayList<>();
+        
+        for(Reserva res : reservasHuesped){
+            System.out.println("CheckIn - reserva: " + res.getCheckIn().toInstant().toString());
+            System.out.println("FechaInicio - parametro: " + fechaIn.toString());
+            if(intervaloPedido.contains(res.getCheckIn().toInstant())){
+                reservasCoincidentes.add(res);
+            }
+        }
+        
+        return reservasCoincidentes;
     }
     
 }

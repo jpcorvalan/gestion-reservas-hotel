@@ -14,6 +14,8 @@
     if(usuario == null) { 
         response.sendRedirect("login.jsp");
     }    
+    
+    String mensajeErrorFechaVacia = (String) sesion.getAttribute("fechaVaciaError");
             
     List<Reserva> reservasHuesped = (List<Reserva>) sesion.getAttribute("listaReservasDeHuesped");
 
@@ -24,10 +26,48 @@
     
     <section>
         
-        
-        
     <%  if(reservasHuesped != null){           %>
     <%      if(!reservasHuesped.isEmpty()){    %>
+        
+                <div class="container bloque-formulario-celeste">
+
+                    <h2 class="titulos">Reservas de un día específico</h2>
+
+                    <div class="formulario">
+
+                    <%  if(sesion.getAttribute("fechaVaciaError") != null){ %>
+
+                            <label for="">
+                                <p class="mensaje-error"><%= mensajeErrorFechaVacia %></p>
+                                <% sesion.setAttribute("fechaVaciaError", null); %>
+                            </label>
+
+                        <%  } %>
+
+                        <form action="SvtHuesped" method="get">
+
+                            <input name="id" type="hidden" value="<%= reservasHuesped.get(0).getHuesped().getId() %>">
+
+                            <label for="">
+                                <p class="indicador">Ingrese una fecha inicio</p>
+                                <input name="fecha-inicio" type="date" class="campos">
+                            </label>
+
+                            <label for="">
+                                <p class="indicador">Ingrese una fecha limite</p>
+                                <input name="fecha-limite" type="date" class="campos">
+                            </label>
+
+                            <div class="boton">
+                                <input type="submit" class="boton-verde" value="Buscar reservas">
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                </div>
+        
         
                 <h2 class="titulos">Todas las reservas de <%= reservasHuesped.get(0).getHuesped().getNombre() + " " + reservasHuesped.get(0).getHuesped().getApellido() %></h2>
     
@@ -42,7 +82,10 @@
                 </div>
     
     <%      } else {                            %>
-                <h2 class="titulos animate__animated animate__fadeIn">No se hayaron reservas</h2>
+                <div class="no-reservas-aviso">
+                    <h2 class="titulos animate__animated animate__fadeIn">No se hayaron reservas</h2>
+                    <a href="ver_todos_huespedes.jsp" class="boton-celeste">Volver a los huéspedes</a>
+                </div>
     <%      }                                   %>           
                 
     <%      for(Reserva res : reservasHuesped){ %>

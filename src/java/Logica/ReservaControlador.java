@@ -66,5 +66,9 @@ public class ReservaControlador {
         reservaControlador.eliminarReserva(idReserva);
     }
     
+    public List<Reserva> obtenerReservasDeEmpleado(int idEmpleado){
+        return reservaControlador.obtenerReservaDeEmpleado(idEmpleado);
+    }
+    
     
 }

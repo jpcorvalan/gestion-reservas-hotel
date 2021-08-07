@@ -51,4 +51,8 @@ public class ReservaPersistenciaControlador {
         }
     }
     
+    public List<Reserva> obtenerReservaDeEmpleado(int idEmpleado){
+        return reservaJpa.findReservaByIdEmpleado(idEmpleado);
+    }
+    
 }

@@ -26,16 +26,17 @@
         
         <h2 class="titulos">Reservas de otros empleados</h2>
         
-        <div class="grid-4-columnas">
+        <div class="grid-3-columnas">
             <p class="grid-indicador-1024">Nombre</p>
             <p class="grid-indicador-1024">Apellido</p>
             <p class="grid-indicador-1024">Cargo</p>
             <p class="grid-indicador-1024">Reservas hechas</p>
+            <p class="grid-indicador-1024"> </p>
         </div>
         
         <% for(Empleado emp : listaEmpleados){ %>
         
-            <div class="grid-4-columnas">
+            <div class="grid-3-columnas">
             
                 <div>
                     <p class="grid-indicador">Nombre</p>
@@ -56,6 +57,13 @@
                     <p class="grid-indicador">Reservas</p>
                     <p class="grid-dato"><%= emp.getCantidadReservas() %></p>
                 </div>
+                
+                <form action="SvtEmpleado" method="post">
+                    <div class="grid-boton-modificar">
+                        <input name="id" type="hidden" value="<%= emp.getId() %>">
+                        <button class="detalles">Reservas</button>
+                    </div>
+                </form>
                 
             </div>
                 
