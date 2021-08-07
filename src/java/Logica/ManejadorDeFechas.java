@@ -7,17 +7,14 @@ package Logica;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.Duration;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
-import java.time.temporal.TemporalUnit;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.crypto.AEADBadTagException;
 import org.threeten.extra.Interval;
 
 /**
@@ -242,21 +239,26 @@ public class ManejadorDeFechas {
     
     public List<Reserva> obtenerReservasPorIntervaloDeFechas(Calendar fechaInicio, Calendar fechaLimite, List<Reserva> reservasHuesped){
                
+        // Obtenemos las fechas y las convertimos a Instant truncando las medidas hasta los días, para que las horas y segundos no infieran.
         Instant fechaIn = fechaInicio.toInstant().truncatedTo(ChronoUnit.DAYS);
         Instant fechaLim = fechaLimite.toInstant().truncatedTo(ChronoUnit.DAYS);
-        
+                
+        // Creamos un intervalo con las fechas pedidas
         Interval intervaloPedido = Interval.of(fechaIn, fechaLim);
         
+        // Inicializamos el arreglo que tendrá las reservas que coincidan con la búsqueda.
         List<Reserva> reservasCoincidentes = new ArrayList<>();
         
+        // Recorremos el arreglo de todas las reservas del huesped que llegó por parámetro
         for(Reserva res : reservasHuesped){
-            System.out.println("CheckIn - reserva: " + res.getCheckIn().toInstant().toString());
-            System.out.println("FechaInicio - parametro: " + fechaIn.toString());
+            
+            //Si el Intervalo contiene la fecha de CheckIn de algún registro, este se añade al arreglo de reservas coincidentes.
             if(intervaloPedido.contains(res.getCheckIn().toInstant())){
                 reservasCoincidentes.add(res);
             }
         }
         
+        // Finalmente retornamos el arreglo que contiene las reservas que coincidieron.
         return reservasCoincidentes;
     }
     
