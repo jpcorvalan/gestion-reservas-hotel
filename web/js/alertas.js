@@ -7,7 +7,7 @@
 /* global Swal */
 
 function confirmDeleteHuesped(){
-    var respuesta = confirm('Si elimina al Huesped, tambien se borrara toda la informacion relacionada a este, incluyendo las Reservas asociadas, esta seguro que sea hacerlo?');
+    var respuesta = confirm('Si elimina al Huesped, tambien se borrara toda la informacion relacionada a este, incluyendo las Reservas asociadas, esta seguro que desea hacerlo?');
 
     if(respuesta === true){
         return true;

@@ -79,13 +79,15 @@
                 
                     <label for="">
                         <p class="indicador">Check-In</p>
-                        <p class="indicador">Actual: <%= reserva.getCheckIn().get(Calendar.DAY_OF_MONTH) + 1%>/<%= reserva.getCheckIn().get(Calendar.MONTH)+1 %>/<%= reserva.getCheckIn().get(Calendar.YEAR) %></p>
+                        <!--<p class="indicador">Actual: <%= reserva.getCheckIn().get(Calendar.DAY_OF_MONTH) + 1%>/<%= reserva.getCheckIn().get(Calendar.MONTH)+1 %>/<%= reserva.getCheckIn().get(Calendar.YEAR) %></p>-->
+                        <p class="indicador">Actual: <%= reserva.getCheckIn().toInstant().toString().substring(0, 10) %> (Formato Año-mes-día)</p>
                         <input name="checkin" class="campos" type="date">
                     </label>
 
                     <label for="">
                         <p class="indicador">Check-Out</p>
-                        <p class="indicador">Actual: <%= reserva.getCheckOut().get(Calendar.DAY_OF_MONTH) + 1 %>/<%= reserva.getCheckOut().get(Calendar.MONTH)+1 %>/<%= reserva.getCheckOut().get(Calendar.YEAR) %></p>
+                        <!--<p class="indicador">Actual: <%= reserva.getCheckOut().get(Calendar.DAY_OF_MONTH) + 1 %>/<%= reserva.getCheckOut().get(Calendar.MONTH)+1 %>/<%= reserva.getCheckOut().get(Calendar.YEAR) %></p>-->
+                        <p class="indicador">Actual: <%= reserva.getCheckOut().toInstant().toString().substring(0, 10) %> (Formato Año-mes-día)</p>
                         <input name="checkout" class="campos" type="date">
                     </label>
 

@@ -118,7 +118,7 @@
                         <p class="grid-dato"><%= res.getHuesped().getProfesion() %></p>
                     </div>
 
-                    <form method="post" action="SvtModificar">
+                    <form method="post" action="SvtModificarReserva">
                         <div class="grid-boton-modificar">
                             <input type="hidden" name="id" value="<%= res.getId() %>">
                             <button type="submit" class="modificar">Editar</button>
@@ -126,7 +126,7 @@
                     </form>
 
 
-                    <form method="post" action="SvtDetalles">
+                    <form method="post" action="SvtDetallesReserva">
                         <div class="grid-boton-modificar">
                             <input type="hidden" name="id" value="<%= res.getId() %>">
                             <button type="submit" class="detalles">Detalles</button>
