@@ -74,9 +74,9 @@
                 <p class="grid-indicador-1024">Habitación</p>
                 <p class="grid-indicador-1024">Huesped a cargo</p>
                 <p class="grid-indicador-1024">Personas</p>
-                <p class="grid-indicador-1024">Profesion</p>        
-                <p class="grid-indicador-1024">Editar</p>        
-                <p class="grid-indicador-1024">Detalles</p>        
+                <p class="grid-indicador-1024">Usuario alta</p>        
+                <p class="grid-indicador-1024"> </p>        
+                <p class="grid-indicador-1024"> </p>        
             </div>    
             
             <% }else{ %>
@@ -114,8 +114,8 @@
                     </div>
 
                     <div>
-                        <p class="grid-indicador">Profesión</p>
-                        <p class="grid-dato"><%= res.getHuesped().getProfesion() %></p>
+                        <p class="grid-indicador">Usuario alta</p>
+                        <p class="grid-dato"><%= res.getUsuarioAlta().getNombre() + " " + res.getUsuarioAlta().getApellido() %></p>
                     </div>
 
                     <form method="post" action="SvtModificarReserva">
@@ -131,7 +131,15 @@
                             <input type="hidden" name="id" value="<%= res.getId() %>">
                             <button type="submit" class="detalles">Detalles</button>
                         </div>
-                    </form>                           
+                    </form>   
+                            
+                             
+                    <form action="SvtEliminarReserva" method="post">
+                        <div class="grid-boton-modificar">
+                            <input type="hidden" name="id" value="<%= res.getId() %>">
+                            <button onclick="return confirmDeleteReserva()" type="submit" class="eliminar">Eliminar</button>
+                        </div>
+                    </form>
 
                 </div>
 

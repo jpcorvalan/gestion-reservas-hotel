@@ -31,7 +31,7 @@
         
                 <div class="container bloque-formulario-celeste">
 
-                    <h2 class="titulos">Reservas de un día específico</h2>
+                    <h2 class="titulos">Buscar reservas del huésped</h2>
 
                     <div class="formulario">
 
@@ -76,6 +76,7 @@
                     <p class="grid-indicador-1024">Check-In</p>
                     <p class="grid-indicador-1024">Check-Out</p>
                     <p class="grid-indicador-1024">Habitación</p>
+                    <p class="grid-indicador-1024">Tipo de habitación</p>
                     <p class="grid-indicador-1024">Personas</p>
                     <p class="grid-indicador-1024"> </p>
                     <p class="grid-indicador-1024"> </p>
@@ -110,6 +111,11 @@
                     <div>
                         <p class="grid-indicador">Habitación</p>
                         <p class="grid-dato"><%= res.getHabitacion().getNroHabitacion() %></p>
+                    </div>
+
+                    <div>
+                        <p class="grid-indicador">Tipo habitación</p>
+                        <p class="grid-dato"><%= res.getHabitacion().getTematica().getNombreHabitacion() %></p>
                     </div>
 
                     <div>

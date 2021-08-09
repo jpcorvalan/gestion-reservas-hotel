@@ -33,7 +33,7 @@
             <p class="grid-indicador-1024">Habitación</p>
             <p class="grid-indicador-1024">Huesped</p>
             <p class="grid-indicador-1024">Personas</p>
-            <p class="grid-indicador-1024">Profesion</p>      
+            <p class="grid-indicador-1024">Profesion del huésped</p>      
             <p class="grid-indicador-1024"> </p>
             <p class="grid-indicador-1024"> </p>
             <p class="grid-indicador-1024"> </p>

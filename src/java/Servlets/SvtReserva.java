@@ -143,7 +143,7 @@ public class SvtReserva extends HttpServlet {
                 ManejadorDeFechas comprobador = new ManejadorDeFechas();
 
                 // Se verifica que las fechas de CheckIn/Out sean válidas
-                if(checkIn.compareTo(checkOut) <= 0){
+                if(checkIn.before(checkOut)){
 
                     // Si la comprobación da FALSE, significa que no hay conflicto entre fechas y puede realizarse la reserva
                     if(!comprobador.conflictoConFechasReservadas(checkIn, checkOut, idHabitacion)){
@@ -166,13 +166,13 @@ public class SvtReserva extends HttpServlet {
                     }
 
                 }else{
-                    sesion.setAttribute("checkInAntesError", "La fecha de Check-In es antes que la del Check-Out, revise las fechas e intente de nuevo.");
+                    sesion.setAttribute("checkInAntesError", "La fecha de Check-In es antes o el mismo día que la del Check-Out, revise las fechas e intente de nuevo.");
 
                     response.sendRedirect("reservar_habitacion_form.jsp");
                 }
             
             } else {
-                sesion.setAttribute("cantidadPersonasError", "La cantidad de personas sobrepasa el límite permitido para la habitación. Escoga otra habitación o reduzca el número de personas.");
+                sesion.setAttribute("cantidadPersonasError", "La cantidad de personas sobrepasa el límite permitido para la habitación. Escoja otra habitación o reduzca el número de personas.");
                 
                 response.sendRedirect("reservar_habitacion_form.jsp");
             }
