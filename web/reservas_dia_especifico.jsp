@@ -77,6 +77,7 @@
                 <p class="grid-indicador-1024">Usuario alta</p>        
                 <p class="grid-indicador-1024"> </p>        
                 <p class="grid-indicador-1024"> </p>        
+                <p class="grid-indicador-1024"> </p>        
             </div>    
             
             <% }else{ %>

@@ -43,12 +43,7 @@
                     
                     <div class="boton">
                         <input class="boton-verde" type="submit" value="Ingresar">
-                    </div>
-                    
-                    <div class="boton">
-                        <p class="indicador text-center">Si aún no posee una cuenta, puede <a href="registro.jsp">REGISTRARSE</a></p>
-                    </div>
-                    
+                    </div>                    
                     
                 </form>
                 
