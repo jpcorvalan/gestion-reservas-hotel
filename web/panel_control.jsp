@@ -42,7 +42,7 @@
             <a href="reservas_dia_especifico.jsp" class="boton-verdev2">Consultar reservas en un día específico</a>
             <a href="otros_empleados_reservas.jsp" class="boton-verdev2">Ver reservas de otros empleados</a>
             <a href="ganancias_diarias.jsp" class="boton-verdev2">Ver ganancias diarias</a>
-            <a href="tipo_habitacion_form.jsp" class="boton-verdev2">Ver ganancias mensuales</a>
+            <a href="ganancias_mensuales.jsp" class="boton-verdev2">Ver ganancias mensuales</a>
             
         </div>
         

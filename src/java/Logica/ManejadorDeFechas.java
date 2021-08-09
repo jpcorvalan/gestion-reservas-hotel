@@ -14,6 +14,7 @@ import java.time.temporal.TemporalUnit;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -82,7 +83,6 @@ public class ManejadorDeFechas {
 
                     Interval intervaloReservaGuardada = Interval.of(reservaGuardadaFechaDesde, reservaGuardadaFechaHasta);
                     
-
                     // Overlaps da TRUE si las fechas se solapan, FALSE caso contrario, es decir, si da FALSE, SE PUEDE RESERVAR
                     return intervaloNuevaReserva.overlaps(intervaloReservaGuardada);
                 }
@@ -162,7 +162,7 @@ public class ManejadorDeFechas {
         
         
         // Iteramos hasta que el CheckIn sobrepase la fecha del CheckOut
-        while(pCheckIn.compareTo(pCheckOut) <= 0){
+        while(pCheckIn.before(pCheckOut)){
             
             // Mientras siga iterando, la variable aumentará su valor en 1.
             dias+=1;
@@ -242,22 +242,67 @@ public class ManejadorDeFechas {
     
     public List<Reserva> obtenerReservasPorIntervaloDeFechas(Calendar fechaInicio, Calendar fechaLimite, List<Reserva> reservasHuesped){
                
+        // Convertimos las fechas llegadas por parámetros a Instant y eliminamos las horas/minutos/segundos para que no infieran.
         Instant fechaIn = fechaInicio.toInstant().truncatedTo(ChronoUnit.DAYS);
         Instant fechaLim = fechaLimite.toInstant().truncatedTo(ChronoUnit.DAYS);
         
+        // Creamos un intervalo
         Interval intervaloPedido = Interval.of(fechaIn, fechaLim);
         
+        // Instanciamos un arreglo para guardar las fechas coincidentes.
         List<Reserva> reservasCoincidentes = new ArrayList<>();
         
+        // Recorremos el arreglo que contiene todas las reservas del huesped
         for(Reserva res : reservasHuesped){
-            System.out.println("CheckIn - reserva: " + res.getCheckIn().toInstant().toString());
-            System.out.println("FechaInicio - parametro: " + fechaIn.toString());
+            
+            // Si el intervalo contiene la fecha de checkIn de las reservas del huesped
             if(intervaloPedido.contains(res.getCheckIn().toInstant())){
+                
+                // Se agrega al arreglo de las reservas coincidentes
                 reservasCoincidentes.add(res);
             }
         }
         
+        // Una vez fuera del bucle, se retorna el arreglo de las reservas que coincidieron.
         return reservasCoincidentes;
+    }
+    
+    
+    
+
+    public List<List<Reserva>> reservasDelMes(Calendar fechaPedidaCalendar){
+        
+        // Seteamos a 1 el día de la fecha llegada por parámetro para que no infiera
+        fechaPedidaCalendar.set(Calendar.DAY_OF_MONTH, 1);    
+        
+        // Instanciamos una fecha nueva que será igual al parámetro, con 1 mes de diferencia
+        Calendar fechaLimiteCalendar = new GregorianCalendar();
+        
+        // Seteamos la diferencia de 1 al mes en la fecha limite
+        fechaLimiteCalendar.set(Calendar.MONTH, fechaPedidaCalendar.get(Calendar.MONTH) + 1);
+        
+        // Seteamos la fecha límite en el día 1 del mes
+        fechaLimiteCalendar.set(Calendar.DAY_OF_MONTH, 1);
+        
+        // Restamos ese día para finalmente obtener el final del mes de la fecha llegada por parámetro
+        fechaLimiteCalendar.add(Calendar.DAY_OF_MONTH, -1);
+        
+        // Instanciamos una Lista que contendrá Listas como sus elementos
+        List<List<Reserva>> reservasDelMes = new ArrayList<>();
+        
+        // Hacemos una iteración mientras la fecha pedida esté antes que la fecha límite
+        while(fechaPedidaCalendar.before(fechaLimiteCalendar)){
+            
+            // Ejecutamos el método que utilizamos para verificar las ganancias diarias, este recibirá el calendar que se irá modificando en la iteración
+            // El método en cuestión devuelve la lista de las reservas que se realizaron en el día, por lo que lo agregamos a nuestro arreglo de Listas.
+            reservasDelMes.add(reservasEnDiaEspecifico(fechaPedidaCalendar));
+            
+            // Aumentamos el día de la fecha llegada por parámetro en 1, y así repetir el bucle hasta que coincida con la fecha límite.
+            fechaPedidaCalendar.add(Calendar.DAY_OF_MONTH, 1);
+        }
+        
+        // Una vez fuera del bucle, retornamos el arreglo de Listas.
+        return reservasDelMes;
     }
     
 }

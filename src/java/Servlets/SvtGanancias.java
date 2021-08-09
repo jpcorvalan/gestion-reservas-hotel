@@ -67,7 +67,26 @@ public class SvtGanancias extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
+        HttpSession sesion = request.getSession();
+        
+        try {
+            Calendar fechaPedida = ManejadorDeFechas.conversorACalendar(request.getParameter("fecha-pedida"));
+            ManejadorDeFechas manejador = new ManejadorDeFechas();
+            
+            List<List<Reserva>> reservasDelMes = manejador.reservasDelMes(fechaPedida);
+            
+            sesion.setAttribute("reservasDelMes", reservasDelMes);
+            
+            response.sendRedirect("ganancias_mensuales.jsp");
+            
+            
+        } catch (ParseException ex) {
+            sesion.setAttribute("fechaVaciaError", "Ingrese una fecha válida para la búsqueda");
+            response.sendRedirect("ganancias_mensuales.jsp");
+            Logger.getLogger(SvtGanancias.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
 
     /**
